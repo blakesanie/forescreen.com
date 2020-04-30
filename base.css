@@ -1,0 +1,159 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Spartan", sans-serif;
+  font-weight: 400;
+  position: relative;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #f0f0fb;
+}
+
+body {
+  /* background-color: #f0f0f0; */
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 30px 0;
+}
+
+* {
+  color: #1a203b !important;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+#logoAnchor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 24px;
+  margin-top: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+}
+
+h2 {
+  font-size: 14px;
+  opacity: 0.5;
+  margin-top: 6px;
+  font-weight: 300;
+}
+
+#logo,
+.active img,
+.navItem:hover img {
+  width: 90px;
+  filter: opacity(0.4) drop-shadow(0 0 0 #8a9be7) saturate(600%) !important;
+}
+
+#nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#nav img {
+  width: 24px;
+  margin-left: 12px;
+  margin-right: 40px;
+  filter: opacity(0.16);
+  transition: filter 0.2s ease;
+  margin-top: -4px;
+}
+
+/* .active img {
+  filter: opacity(0.35) drop-shadow(0 0 0 #8a9be7) saturate(500%) !important;
+} */
+
+.navItem {
+  /* padding: 5px 0; */
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  justify-content: flex-end;
+}
+
+h5 {
+  font-size: 14px;
+  opacity: 0.3;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.active h5,
+.navItem:hover h5 {
+  opacity: 1;
+}
+
+#pageBody {
+  display: flex;
+  background-color: white;
+}
+
+.adSpace {
+  flex: 1;
+  /* background-color: orange; */
+}
+
+#content {
+  width: calc(100% - 0px);
+  padding: 0 30px;
+  padding-bottom: 100px;
+  min-height: calc(100vh - 150px);
+}
+
+h6 {
+  font-size: 20px;
+  width: 100%;
+  line-height: 80px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.needsToRender {
+  transition: opacity 0.3s ease;
+}
+
+.invisible {
+  max-height: 0px !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+}
+
+#ad {
+  height: 100px;
+  width: 700px;
+  background-color: blue;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+svg {
+  overflow: visible;
+  margin-top: -50px !important;
+  margin-bottom: -30px !important;
+}
+
+sup {
+  font-weight: 600;
+  font-size: 60%;
+}

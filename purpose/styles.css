@@ -1,0 +1,100 @@
+#content {
+  max-width: 1100px;
+}
+
+#content * {
+  line-height: 140%;
+}
+
+h3 {
+  text-align: center;
+  font-size: 40px;
+  margin-top: 80px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 29px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+p.desc {
+  font-size: 20px;
+  text-align: center;
+  line-height: 180% !important;
+}
+
+.underline {
+  /* text-decoration: underline; */
+  font-weight: 600;
+}
+
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0 50px 0;
+}
+
+#portfolioHolder {
+  height: 400px;
+  min-width: 313px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin-left: 50px;
+}
+
+.holding {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  margin: 5px;
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.07);
+}
+
+p.holdingText {
+  font-weight: 600;
+  margin-top: 3px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.one {
+  height: calc(33.3% - 10px);
+  width: calc(43% - 10px);
+}
+
+.one p {
+  font-size: 22px;
+}
+
+.two {
+  height: calc(25% - 10px);
+  width: calc(32% - 10px);
+}
+
+.two p {
+  font-size: 16px;
+}
+
+.three {
+  height: calc(20% - 10px);
+  width: calc(26.5% - 10px);
+}
+
+.three p {
+  font-size: 13px;
+}
+
+.diagram {
+  width: 350px;
+  margin-right: 50px;
+  filter: opacity(0.6) drop-shadow(0 0 0 #8a9be7) saturate(500%) !important;
+}

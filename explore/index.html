@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Forescreen</title>
+        <meta name="author" content="Blake Sanie">
+        <meta name="description" content="description here">
+        <meta name="keywords" content="keywords,here">
+        <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../colors.css" type="text/css">
+        <link rel="stylesheet" href="../base.css" type="text/css">
+        <link rel="stylesheet" href="./styles.css" type="text/css">
+        <script src="/jQuery.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <div id="header" href="../">
+            <a id="logoAnchor" href="../">
+                <img src="../stockRankingLogo.svg" id="logo"/>
+                <h1>Forescreen</h1>
+                <h2>A stock screener for the long-term</h2>
+            </a>
+            <div id="nav">
+                <a href="../" class="navItem">
+                    <h5>Overview</h5>
+                    <img src="https://img.icons8.com/ios-glyphs/90/000000/combo-chart.png"/>
+                </a>
+                <a class="navItem active">
+                    <h5>Explore</h5>
+                    <img src="https://img.icons8.com/ios-glyphs/96/000000/sorting-options.png"/>
+                </a>
+                <a class="navItem" href="../quote/">
+                    <h5>Lookup</h5>
+                    <img src="https://img.icons8.com/material-rounded/96/000000/advanced-search.png"/>
+                </a>
+                <a class="navItem" href="../purpose/">
+                    <h5>Purpose</h5>
+                    <img src="https://img.icons8.com/ios-filled/96/000000/idea.png"/>
+                </a>
+                <!-- <a class="navItem" href="../sale/"> <h5>On Sale</h5> <img src="https://img.icons8.com/pastel-glyph/64/000000/price-tag--v2.png"/> </a> -->
+            </div>
+        </div>
+        <div id="pageBody">
+            <div class="adSpace"></div>
+            <div id="content">
+                <h3>Explore Rankings</h3>
+                <div id="options">
+                    <div class="optionHolder sector">
+                        <h4>Sector:</h4>
+                        <select>
+                            <option value="all">
+                                All
+                            </option>
+                            <option value="basicMaterials">
+                                Basic Materials
+                            </option>
+                            <option value="consumerGoods">
+                                Consumer Goods
+                            </option>
+                            <option value="financial">
+                                Financial
+                            </option>
+                            <option value="healthcare">
+                                Healthcare
+                            </option>
+                            <option value="industrialGoods">
+                                Industrial Goods
+                            </option>
+                            <option value="services">
+                                Services
+                            </option>
+                            <option value="technology">
+                                Technology
+                            </option>
+                            <option value="utilities">
+                                Utilities
+                            </option>
+                        </select>
+                    </div>
+                    <div class="optionHolder rank">
+                        <h4>Rank:</h4>
+                        <select>
+                            <option value="score">
+                                Overall Score
+                            </option>
+                            <option value="scoreSector">
+                                Sector Score
+                            </option>
+                            <option value="saleScore">
+                                Discount
+                            </option>
+                            <option value="roi">
+                                Annual Growth
+                            </option>
+                            <option value="r2">
+                                Volatility
+                            </option>
+                            <option value="marketCap">
+                                Market Cap
+                            </option>
+                        </select>
+                    </div>
+                    <!-- <div class="optionHolder order"> <h4>Order:</h4> <select> <option value="desc"> Descending </option> <option value="asc"> Ascending </option> </select> </div> -->
+                </div>
+                <div id="companies" class="needsToRender invisible">
+                    <!-- <a class="company"> <p class="symbol"> AMZN </p> <p class="companyName"> Amazon.com inc. </p> <p class="sectorLabel"> Consumer Goods </p> <p class="rank industrialGoodsGradient"> 1 </p> <svg viewbox="0 0 100 60"
+                    xmlns="http://www.w3.org/2000/svg"> <defs> <lineargradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"> <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1"/> <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1"/>
+                    </lineargradient> </defs> <path d="M 0,65 l 10,-2 l 10,-5 l 10,-8 l 10,-10 l 10,-14 l 10,5 l 10,2 l 10,-13 l 10,-20 l 10,-10" stroke="url(#grad1)" stroke-width="2" fill="none"/> </svg> <table cellspacing="0"> <tr> <td> <p class="statValue">
+                    1<sup>st</sup> </p> <p class="statDesc"> Overall </p> </td> <td> <p class="statValue"> 1<sup>st</sup> </p> <p class="statDesc"> In Sector </p> </td> <td> <p class="statValue"> 12<sup>th</sup> </p> <p class="statDesc"> On Sale </p> </td> </tr> <tr>
+                    <td> <p class="statValue"> 3<sup>rd</sup> </p> <p class="statDesc"> Least Volatile </p> </td> <td> <p class="statValue"> 20<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </td> <td> <p class="statValue"> $1.1<sup>T</sup> </p> <p
+                    class="statDesc"> Market Cap </p> </td> </tr> </table> </a> -->
+                    <div id="pageControls">
+                        <a id="first">
+                            First
+                        </a>
+                        <a id="prev">
+                            Prev
+                        </a>
+                        <a id="next">
+                            Next
+                        </a>
+                        <a id="last">
+                            Last
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="adSpace"></div>
+        </div>
+        <h6>Forescreen</h6>
+        <script src="../utils.js" type="text/javascript"></script>
+        <script src="./functions.js" type="text/javascript"></script>
+    </body>
+</html>

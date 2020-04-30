@@ -1,0 +1,125 @@
+#content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1100px;
+}
+
+h3 {
+  font-size: 30px;
+  margin-top: 60px;
+}
+
+input {
+  font-size: 26px;
+  text-align: center;
+  border: none;
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.12);
+  height: 60px;
+  width: 150px;
+  padding-top: 5px;
+  margin-top: 50px;
+  border-radius: 8px;
+  text-transform: uppercase;
+  z-index: 999;
+  font-weight: 600;
+}
+
+input::placeholder {
+  opacity: 0.2;
+}
+
+.name {
+  font-size: 24px;
+  padding: 30px 20px 0 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 99;
+  text-align: center;
+}
+
+.sector {
+  font-size: 16px;
+  color: #888 !important;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 99;
+  padding: 10px 20px 5px 20px;
+}
+
+svg {
+  width: 100%;
+  margin-top: -40px;
+  margin-bottom: 0px !important;
+}
+
+.statsHolder {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 0;
+  margin-top: 10px;
+}
+
+.statsHolder:nth-of-type(1) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 20px;
+}
+
+.statValue {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.statDesc {
+  font-size: 14px;
+}
+
+.needsToRender {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.notFoundText {
+  font-size: 22px;
+  margin-top: 50px;
+  text-align: center;
+  max-width: 800px;
+  line-height: 160%;
+}
+
+.strong {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 160%;
+}
+
+ol {
+  margin-top: 20px;
+}
+
+li {
+  font-size: 16px;
+  line-height: 34px;
+}
+
+#tradingview_e59b1 {
+  margin-top: 50px;
+  width: 100%;
+}
+
+#tradingview_e59b1 div {
+  width: 100% !important;
+}
+
+.tradingview-widget-container {
+  display: none;
+}
