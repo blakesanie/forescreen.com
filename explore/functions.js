@@ -1,6 +1,6 @@
 var urlParams = getUrlVars();
 var rank = urlParams.rank || "score";
-var sector = urlParams.sector || "all";
+var sector = urlParams.sector || "All";
 var page = parseInt(urlParams.page || 0);
 console.log(urlParams);
 
@@ -47,9 +47,7 @@ $.ajax({
         company.scoreSectorRank
       }<sup>${getRankSuffix(
         company.scoreSectorRank
-      )}</sup> </p> <p class="statDesc"> In ${
-        company.sector
-      } </p> </td> <td> <p class="statValue"> ${
+      )}</sup> </p> <p class="statDesc"> In Sector </p> </td> <td> <p class="statValue"> ${
         company.saleScoreRank
       }<sup>${getRankSuffix(
         company.saleScoreRank
