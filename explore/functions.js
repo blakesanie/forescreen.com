@@ -17,7 +17,7 @@ $("select").change(function() {
 console.log(toNormalCase(sector));
 
 $.ajax({
-  url: `http://localhost:3000/explore/${encodeURIComponent(
+  url: `http://stock-ranking.herokuapp.com/explore/${encodeURIComponent(
     toNormalCase(sector)
   )}/${rank}/${page}`,
   success: function(companies) {
@@ -71,7 +71,7 @@ $.ajax({
 var numPages = Infinity;
 
 $.ajax({
-  url: `http://localhost:3000/pagecount/${encodeURIComponent(
+  url: `http://stock-ranking.herokuapp.com/pagecount/${encodeURIComponent(
     toNormalCase(sector)
   )}`,
   success: function(res) {
