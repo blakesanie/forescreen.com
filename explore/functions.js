@@ -17,7 +17,7 @@ $("select").change(function() {
 console.log(toNormalCase(sector));
 
 $.ajax({
-  url: `http://stock-ranking.herokuapp.com/explore/${encodeURIComponent(
+  url: `http://localhost:3000/explore/${encodeURIComponent(
     toNormalCase(sector)
   )}/${rank}/${page}`,
   success: function(companies) {
@@ -71,13 +71,20 @@ $.ajax({
 var numPages = Infinity;
 
 $.ajax({
-  url: `http://stock-ranking.herokuapp.com/pagecount/${encodeURIComponent(
+  url: `http://localhost:3000/pagecount/${encodeURIComponent(
     toNormalCase(sector)
   )}`,
   success: function(res) {
     numPages = res.count;
+    if (page == numPages - 1) {
+      $("#next, #last").addClass("inactive");
+    }
   }
 });
+
+if (page == 0) {
+  $("#first, #prev").addClass("inactive");
+}
 
 $("#first").click(function() {
   goToNewUrl(sector, rank, 0);
