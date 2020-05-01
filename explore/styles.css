@@ -70,6 +70,7 @@ select {
   margin-top: 4px;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 100;
+  max-width: 150px;
 }
 
 .companyName {
@@ -171,4 +172,30 @@ sup {
 .inactive {
   opacity: 0.3;
   pointer-events: none;
+}
+
+@media screen and (max-width: 660px) {
+  .company {
+    width: calc(360px);
+  }
+  svg {
+    margin-bottom: 10px !important;
+  }
+  .symbol {
+    font-size: 30px;
+  }
+  .companyName {
+    font-size: 16px;
+    max-width: 240px;
+  }
+  .sectorLabel {
+    font-size: 14px;
+  }
+  .statValue {
+    font-size: 24px;
+  }
+  .statDesc {
+    font-size: 12px;
+    margin-top: 3px;
+  }
 }
