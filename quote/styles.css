@@ -123,7 +123,19 @@ li {
   display: none;
 }
 
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 500px) {
+  h3 {
+    font-size: 7vmin;
+  }
+  input {
+    font-size: 6vmin;
+  }
+  .name {
+    font-size: 6vmin;
+  }
+  .sector {
+    font-size: 4vmin;
+  }
   svg {
     margin-top: 0 !important;
   }
@@ -131,7 +143,30 @@ li {
     flex-wrap: wrap;
     justify-content: center;
   }
+  .statValue {
+    font-size: 7vmin;
+  }
+  .statDesc {
+    font-size: 3.5vmin;
+  }
   .stat {
-    margin: 14px 30px;
+    margin: 3vmin 2vmin;
+    width: 37vmin;
+  }
+  #tradingview_e59b1 {
+    width: 150%;
+    transform: scale(0.66);
+    margin-top: -20vmin;
+    margin-bottom: -30vmin;
+  }
+  #tradingview_e59b1 div {
+    height: 200vmin !important;
+  }
+  .notFoundText,
+  .strong {
+    font-size: 6vmin;
+  }
+  li {
+    font-size: 3.4vmin;
   }
 }

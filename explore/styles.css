@@ -174,28 +174,52 @@ sup {
   pointer-events: none;
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 500px) {
+  h3 {
+    font-size: 8vmin;
+    margin: 12vmin 0;
+  }
+  h4 {
+    font-size: 7vmin;
+  }
+  .optionHolder {
+    margin: 5vmin 0;
+  }
+  select {
+    font-size: 5vmin;
+  }
+  #companies {
+    margin-top: 7vmin;
+  }
   .company {
-    width: calc(360px);
+    width: calc(100% - 40px);
+    max-width: 360px;
   }
   svg {
     margin-bottom: 10px !important;
   }
   .symbol {
-    font-size: 30px;
+    font-size: 7vmin;
   }
   .companyName {
-    font-size: 16px;
-    max-width: 240px;
+    font-size: 4vmin;
+    max-width: calc(100% - 50px);
+    line-height: 6vmin;
   }
   .sectorLabel {
-    font-size: 14px;
+    font-size: 3.4vmin;
+    line-height: 6vmin;
   }
   .statValue {
-    font-size: 24px;
+    font-size: 6vmin;
   }
   .statDesc {
-    font-size: 12px;
-    margin-top: 3px;
+    font-size: 3vmin;
+    margin-top: 1vmin;
+  }
+  #pageControls > a {
+    font-size: 3.4vmin;
+    margin: 0 1vmin;
+    padding: 4vmin 6vmin 3vmin 6vmin;
   }
 }

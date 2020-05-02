@@ -20,6 +20,7 @@ h4 {
   font-size: 29px;
   text-align: center;
   margin-top: 30px;
+  line-height: 170% !important;
 }
 
 p.desc {
@@ -112,5 +113,40 @@ p.holdingText {
   .diagram {
     margin: 0;
     margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  h3 {
+    font-size: 7vmin;
+    margin-top: 12vmin;
+  }
+  h4 {
+    font-size: 5.5vmin;
+    margin-top: 8vmin;
+  }
+  .section {
+    margin: 8vmin 0 16vmin 0;
+  }
+  .desc {
+    font-size: 4.5vmin !important;
+  }
+  #portfolioHolder {
+    min-width: 0;
+    width: 80vmin !important;
+    height: 104vmin;
+    margin-top: 8vmin;
+  }
+  .one p {
+    font-size: 5.7vmin;
+  }
+  .two p {
+    font-size: 4vmin;
+  }
+  .three p {
+    font-size: 3vmin;
+  }
+  .diagram {
+    width: 100%;
   }
 }
