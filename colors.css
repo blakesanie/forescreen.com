@@ -3,18 +3,24 @@
   --technologyEnd: #ff8a00;
   --utilitiesStart: #ff7a00;
   --utilitiesEnd: #eff400;
-  --consumerGoodsStart: #00bd02;
-  --consumerGoodsEnd: #ccff00;
-  --industrialGoodsStart: #00b2ff;
-  --industrialGoodsEnd: #00ff75;
+  --communicationServicesStart: #00bd02;
+  --communicationServicesEnd: #ccff00;
+  --industrialsStart: #00b2ff;
+  --industrialsEnd: #00ff75;
   --financialStart: #0038ff;
   --financailEnd: #00f7ff;
-  --servicesStart: #6900ff;
-  --servicesEnd: #cc00ff;
+  --consumerCyclicalStart: #6900ff;
+  --consumerCyclicalEnd: #cc00ff;
   --basicMaterialsStart: #d400ff;
   --basicMaterialsEnd: #ff0063;
-  --healthcareStart: #822f00;
+  --healthcareStart: #823b00;
   --healthcareEnd: #ffb545;
+  --consumerDefensiveStart: black;
+  --consumerDefensiveEnd: #bbb;
+  --energyStart: #ff0063;
+  --energyEnd: #ff46d1;
+  --realEstateStart: rgb(161, 0, 0);
+  --realEstateEnd: rgb(255, 115, 0);
 }
 
 .technologyGradient {
@@ -49,36 +55,36 @@
   stop-color: var(--utilitiesEnd);
 }
 
-.consumerGoodsGradient {
+.communicationServicesGradient {
   background: linear-gradient(
     to right,
-    var(--consumerGoodsStart),
-    var(--consumerGoodsEnd)
+    var(--communicationServicesStart),
+    var(--communicationServicesEnd)
   );
 }
 
-.consumerGoodsStart {
-  stop-color: var(--consumerGoodsStart);
+.communicationServicesStart {
+  stop-color: var(--communicationServicesStart);
 }
 
-.consumerGoodsEnd {
-  stop-color: var(--consumerGoodsEnd);
+.communicationServicesEnd {
+  stop-color: var(--communicationServicesEnd);
 }
 
-.industrialGoodsGradient {
+.industrialsGradient {
   background: linear-gradient(
     to right,
-    var(--industrialGoodsStart),
-    var(--industrialGoodsEnd)
+    var(--industrialsStart),
+    var(--industrialsEnd)
   );
 }
 
-.industrialGoodsStart {
-  stop-color: var(--industrialGoodsStart);
+.industrialsStart {
+  stop-color: var(--industrialsStart);
 }
 
-.industrialGoodsEnd {
-  stop-color: var(--industrialGoodsEnd);
+.industrialsEnd {
+  stop-color: var(--industrialsEnd);
 }
 
 .financialGradient {
@@ -97,20 +103,20 @@
   stop-color: var(--financailEnd);
 }
 
-.servicesGradient {
+.consumerCyclicalGradient {
   background: linear-gradient(
     to right,
-    var(--servicesStart),
-    var(--servicesEnd)
+    var(--consumerCyclicalStart),
+    var(--consumerCyclicalEnd)
   );
 }
 
-.servicesStart {
-  stop-color: var(--servicesStart);
+.consumerCyclicalStart {
+  stop-color: var(--consumerCyclicalStart);
 }
 
-.servicesEnd {
-  stop-color: var(--servicesEnd);
+.consumerCyclicalEnd {
+  stop-color: var(--consumerCyclicalEnd);
 }
 
 .basicMaterialsGradient {
@@ -143,4 +149,48 @@
 
 .healthcareEnd {
   stop-color: var(--healthcareEnd);
+}
+
+.consumerDefensiveGradient {
+  background: linear-gradient(
+    to right,
+    var(--consumerDefensiveStart),
+    var(--consumerDefensiveEnd)
+  );
+}
+
+.consumerDefensiveStart {
+  stop-color: var(--consumerDefensiveStart);
+}
+
+.consumerDefensiveEnd {
+  stop-color: var(--consumerDefensiveEnd);
+}
+
+.energyGradient {
+  background: linear-gradient(to right, var(--energyStart), var(--energyEnd));
+}
+
+.energyStart {
+  stop-color: var(--energyStart);
+}
+
+.energyEnd {
+  stop-color: var(--energyEnd);
+}
+
+.realEstateGradient {
+  background: linear-gradient(
+    to right,
+    var(--realEstateStart),
+    var(--realEstateEnd)
+  );
+}
+
+.realEstateStart {
+  stop-color: var(--realEstateStart);
+}
+
+.realEstateEnd {
+  stop-color: var(--realEstateEnd);
 }

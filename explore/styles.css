@@ -87,10 +87,10 @@ select {
 }
 
 .sectorLabel {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 400;
   background-color: rgba(255, 255, 255, 0.8);
-  max-width: 110px;
+  max-width: 132px;
   z-index: 100;
   line-height: 20px;
   color: #777 !important;
