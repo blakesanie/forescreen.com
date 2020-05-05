@@ -44,6 +44,7 @@ $(document).on("keypress", function(e) {
 });
 
 if (symbols.length > 0) {
+  $(".loader").css("display", "block");
   $.ajax({
     url: `http://stock-ranking.herokuapp.com/portfolioAdvice/${encodeURIComponent(
       getUserSymbolsString()
