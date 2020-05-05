@@ -1,6 +1,6 @@
 var urlParams = getUrlVars();
 var rank = urlParams.rank || "score";
-var sector = urlParams.sector || "All";
+var sector = urlParams.sector || "all";
 var page = parseInt(urlParams.page || 0);
 console.log(urlParams);
 

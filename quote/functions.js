@@ -93,7 +93,7 @@ function goToNewUrl(symbol) {
 }
 
 $("input").focusout(function() {
-  goToNewUrl($(this).val());
+  if ($("input").val() != "") goToNewUrl($(this).val());
 });
 
 $(document).on("keypress", function(e) {

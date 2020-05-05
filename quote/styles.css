@@ -62,6 +62,11 @@ svg {
 
 .statsHolder:nth-of-type(1) {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  justify-content: center;
+}
+
+.statsHolder:nth-of-type(1) .stat {
+  margin: 0 24px;
 }
 
 .stat {
@@ -95,7 +100,7 @@ svg {
   line-height: 160%;
 }
 
-.strong {
+.needsToRender .strong {
   font-size: 26px;
   font-weight: 600;
   line-height: 160%;
