@@ -44,11 +44,12 @@
         <link rel="stylesheet" href="/base.css" type="text/css">
         <link rel="stylesheet" href="/companyStyles.css" type="text/css">
         <link rel="stylesheet" href="./styles.css" type="text/css">
+        <link rel="stylesheet" href="/loader.css" type="text/css">
         <script src="/jQuery.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="header">
-            <a id="logoAnchor">
+            <a id="logoAnchor" href="/">
                 <img src="/stockRankingLogo.svg" id="logo"/>
                 <h1>Forescreen</h1>
                 <h2>A stock screener for the long-term</h2>
@@ -75,6 +76,10 @@
                     <h5>Purpose</h5>
                     <img src="https://img.icons8.com/ios-filled/96/000000/idea.png"/>
                 </a>
+                <a class="navItem" href="/account/">
+                    <h5>Account</h5>
+                    <img src="https://img.icons8.com/ios-glyphs/90/000000/login-as-user.png"/>
+                </a>
             </div>
         </div>
         <div id="pageBody">
@@ -84,6 +89,7 @@
                 <h4>List the symbols you currently own</h4>
                 <textarea placeholder="MSFT, AAPL, V, MA" rows="1"></textarea>
                 <h4>Our cutting-edge algorithm naturally takes into account the sectors and industries you already own for optimal diversification.</h4>
+                <div class="loader">Loading...</div>
                 <div id="companies" class="needsToRender invisible">
                     <h3>We recommend you aquire the following:<br/>
                         <span class="subNote">(In the indicated order)</span></h3>

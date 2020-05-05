@@ -64,6 +64,7 @@ $.ajax({
       )}</sup> </p> <p class="statDesc"> Market Cap. </p> </td> </tr> </table> </a>`;
       $("#companies").prepend(html);
     }
+    $(".loader").css("display", "none");
     $(".needsToRender").removeClass("invisible");
   }
 });

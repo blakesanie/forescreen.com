@@ -43,6 +43,7 @@
         <link rel="stylesheet" href="../colors.css" type="text/css">
         <link rel="stylesheet" href="../base.css" type="text/css">
         <link rel="stylesheet" href="./styles.css" type="text/css">
+        <link rel="stylesheet" href="/loader.css" type="text/css">
         <script src="/jQuery.js" type="text/javascript"></script>
     </head>
     <body>
@@ -73,6 +74,10 @@
                     <h5>Purpose</h5>
                     <img src="https://img.icons8.com/ios-filled/96/000000/idea.png"/>
                 </a>
+                <a class="navItem" href="/account/">
+                    <h5>Account</h5>
+                    <img src="https://img.icons8.com/ios-glyphs/90/000000/login-as-user.png"/>
+                </a>
             </div>
         </div>
         <div id="pageBody">
@@ -80,6 +85,7 @@
             <div id="content">
                 <h3 class="strong">Symbol Lookup</h3>
                 <input type="text" placeholder="TSLA"/>
+                <div class="loader" style="display: none;">Loading...</div>
                 <div class="needsToRender invisible">
                     <!-- <h4>Tesla Motors inc.</h4> <svg viewbox="0 0 80 40" xmlns="http://www.w3.org/2000/svg"> <defs> <lineargradient id="grad0" x1="0%" y1="0%" x2="100%" y2="0%"> <stop offset="0%" class="servicesStart"></stop> <stop offset="100%"
                     class="servicesEnd"></stop> </lineargradient> </defs> <path d="M0.4,39.9 L0.6,39.8 Q1,39.61158493,1.4,39.6 L1.6,39.6 Q2,39.6116848,2.4,39.4 L2.6,39.3 Q3,39.1594826,3.4,39.2 L3.6,39.2 Q4,39.29661145,4.4,39.1 L4.6,39.0 Q5,38.8897859,5.4,39.1 L5.6,39.2

@@ -7,6 +7,7 @@ if (urlParams.symbol) {
 }
 
 function getSymbolData(symbol) {
+  $(".loader").css("display", "block");
   $.ajax({
     url: `http://stock-ranking.herokuapp.com/quote/${encodeURIComponent(
       symbol.toUpperCase()
@@ -67,6 +68,7 @@ function getSymbolData(symbol) {
           container_id: "tradingview_e59b1"
         });
       }
+      $(".loader").css("display", "none");
       $(".needsToRender").removeClass("invisible");
     }
   });

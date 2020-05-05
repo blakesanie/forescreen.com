@@ -1,10 +1,9 @@
-autosize($("textarea"));
-
 var urlParams = getUrlVars();
 var symbols = decodeURIComponent(urlParams.symbols || "").split(",");
 console.log(symbols);
 
 $("textarea").val(symbols.join(", "));
+autosize($("textarea"));
 
 function getUserSymbols() {
   var arr = $("textarea")
@@ -89,6 +88,7 @@ if (symbols.length > 0) {
         )}</sup> </p> <p class="statDesc"> Market Cap. </p> </td> </tr> </table> </a>`;
         $("#companies h3").after(html);
       }
+      $(".loader").css("display", "none");
       $(".needsToRender").removeClass("invisible");
     }
   });
