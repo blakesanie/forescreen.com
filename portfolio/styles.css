@@ -4,12 +4,16 @@
   align-items: center;
 }
 
-h3 {
+h3:not(.proMarker) {
   font-size: 30px;
   margin: 60px 0 10px 0;
   width: 100%;
   text-align: center;
   line-height: 160%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 h4 {
@@ -42,6 +46,7 @@ textarea {
 
 .subNote {
   font-size: 18px;
+  width: 100%;
 }
 
 @media screen and (max-width: 500px) {

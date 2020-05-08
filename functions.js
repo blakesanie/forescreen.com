@@ -1,6 +1,6 @@
 console.log("here");
 $.ajax({
-  url: "http://stock-ranking.herokuapp.com/overview/",
+  url: "http://localhost:3000/overview/",
   success: function(companies) {
     console.log(companies);
     var overall = [];
@@ -42,13 +42,18 @@ $.ajax({
     sectorNames.sort();
     for (var sector of sectorNames) {
       renderSectorSection(sector);
-      for (var i = 0; i < sectors[sector].length; i++) {
+      for (
+        var i = sectors[sector].length - 3;
+        i < sectors[sector].length;
+        i++
+      ) {
         renderSectorCompany(sectors[sector][i]);
       }
     }
     console.table(overall);
     console.table(topSales);
     console.log(sectors);
+    $(".loader").css("display", "none");
     $(".needsToRender").removeClass("invisible");
   }
 });

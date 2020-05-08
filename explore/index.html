@@ -52,7 +52,7 @@
             <a id="logoAnchor" href="../">
                 <img src="../stockRankingLogo.svg" id="logo"/>
                 <h1>Forescreen</h1>
-                <h2>A stock screener for the long-term</h2>
+                <h2>Intelligent long-term investment tools</h2>
             </a>
             <div id="nav">
                 <a class="navItem" href="/">
@@ -108,6 +108,9 @@
                             <option value="energy">
                                 Energy
                             </option>
+                            <option value="financial">
+                                Financial
+                            </option>
                             <option value="healthcare">
                                 Healthcare
                             </option>
@@ -158,17 +161,17 @@
                     1<sup>st</sup> </p> <p class="statDesc"> Overall </p> </td> <td> <p class="statValue"> 1<sup>st</sup> </p> <p class="statDesc"> In Sector </p> </td> <td> <p class="statValue"> 12<sup>th</sup> </p> <p class="statDesc"> On Sale </p> </td> </tr> <tr>
                     <td> <p class="statValue"> 3<sup>rd</sup> </p> <p class="statDesc"> Least Volatile </p> </td> <td> <p class="statValue"> 20<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </td> <td> <p class="statValue"> $1.1<sup>T</sup> </p> <p
                     class="statDesc"> Market Cap </p> </td> </tr> </table> </a> -->
-                    <div id="pageControls">
+                    <div id="pageControls" class="authInvolved invisible">
                         <a id="first">
                             First
                         </a>
                         <a id="prev">
                             Prev
                         </a>
-                        <a id="next">
+                        <a id="next" class="pro">
                             Next
                         </a>
-                        <a id="last">
+                        <a id="last" class="pro">
                             Last
                         </a>
                     </div>
@@ -177,7 +180,14 @@
             <div class="adSpace"></div>
         </div>
         <h6>Forescreen</h6>
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+        <script src="/firebaseConfig.js" type="text/javascript"></script>
         <script src="../utils.js" type="text/javascript"></script>
+        <script src="/pro.js" type="text/javascript"></script>
+        <script src="/updateNav.js" type="text/javascript"></script>
         <script src="./functions.js" type="text/javascript"></script>
     </body>
 </html>

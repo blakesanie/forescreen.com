@@ -1,7 +1,13 @@
 var urlParams = getUrlVars();
 var rank = urlParams.rank || "score";
 var sector = urlParams.sector || "all";
-var page = parseInt(urlParams.page || 0);
+var page = 0;
+if (urlParams.page) {
+  page = urlParams.page;
+  if (page != "last") {
+    page = parseInt(page);
+  }
+}
 console.log(urlParams);
 
 for (var key of Object.keys(urlParams)) {
@@ -16,72 +22,94 @@ $("select").change(function() {
 
 console.log(toNormalCase(sector));
 
-$.ajax({
-  url: `http://stock-ranking.herokuapp.com/explore/${encodeURIComponent(
-    toNormalCase(sector)
-  )}/${rank}/${page}`,
-  success: function(companies) {
-    console.log(companies);
-    if (page > 0 && companies.length == 0) {
+var userStartedAuth = false;
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+    userStartedAuth = true;
+    user.getIdToken(true).then(function(token) {
+      tokenParam = `/${encodeURIComponent(token)}`;
+      makeAPICall(tokenParam);
+    });
+  } else {
+    if (userStartedAuth) {
       goToNewUrl(sector, rank, 0);
+      return;
     }
-    for (var i = companies.length - 1; i >= 0; i--) {
-      var company = companies[i];
-      var html = `<a class="company" href="../quote/?symbol=${company.symbol.toLowerCase()}"> <p class="symbol"> ${
-        company.symbol
-      } </p> <p class="companyName"> ${
-        company.name
-      } </p> <p class="sectorLabel"> ${
-        company.sector
-      } </p> <p class="rank ${toCamelCase(company.sector)}Gradient"> ${i +
-        1 +
-        page * 20} </p> ${getSVG(
-        company,
-        0.5,
-        i
-      )} <table cellspacing="0"> <tr> <td> <p class="statValue"> ${
-        company.scoreRank
-      }<sup>${getRankSuffix(
-        company.scoreRank
-      )}</sup> </p> <p class="statDesc"> Overall </p> </td> <td> <p class="statValue"> ${
-        company.scoreSectorRank
-      }<sup>${getRankSuffix(
-        company.scoreSectorRank
-      )}</sup> </p> <p class="statDesc"> In Sector </p> </td> <td> <p class="statValue"> ${
-        company.saleScoreRank
-      }<sup>${getRankSuffix(
-        company.saleScoreRank
-      )}</sup> </p> <p class="statDesc"> Best Discount </p> </td> </tr> <tr> <td> <p class="statValue"> ${
-        company.r2Rank
-      }<sup>${getRankSuffix(
-        company.r2Rank
-      )}</sup> </p> <p class="statDesc"> Least Volatile </p> </td> <td> <p class="statValue"> ${Math.round(
-        company.roi * 100
-      )}<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </td> <td> <p class="statValue"> $${getFormattedMarketCap(
-        company.marketCap
-      )}<sup>${getMarketCapSuffix(
-        company.marketCap
-      )}</sup> </p> <p class="statDesc"> Market Cap. </p> </td> </tr> </table> </a>`;
-      $("#companies").prepend(html);
-    }
-    $(".loader").css("display", "none");
-    $(".needsToRender").removeClass("invisible");
+    makeAPICall("");
   }
 });
 
-var numPages = Infinity;
+var totalPages = 0;
 
-$.ajax({
-  url: `http://stock-ranking.herokuapp.com/pagecount/${encodeURIComponent(
-    toNormalCase(sector)
-  )}`,
-  success: function(res) {
-    numPages = res.count;
-    if (page == numPages - 1) {
-      $("#next, #last").addClass("inactive");
+function makeAPICall(tokenParam) {
+  console.log(
+    `http://localhost:3000/explore/${encodeURIComponent(
+      toNormalCase(sector)
+    )}/${rank}/${page}${tokenParam}`
+  );
+  $.ajax({
+    // stock-ranking.herokuapp.com
+    url: `http://localhost:3000/explore/${encodeURIComponent(
+      toNormalCase(sector)
+    )}/${rank}/${page}${tokenParam}`,
+    error: function(error) {
+      console.error(error);
+    },
+    success: function(result) {
+      var companies = result.companies;
+      totalPages = result.numPages;
+      page = result.currentPage;
+      if (page == totalPages - 1) {
+        $("#next, #last").addClass("inactive");
+      }
+      console.log(companies);
+      if (page > 0 && companies.length == 0) {
+        goToNewUrl(sector, rank, 0);
+      }
+      for (var i = companies.length - 1; i >= 0; i--) {
+        var company = companies[i];
+        var html = `<a class="company" href="../quote/?symbol=${company.symbol.toLowerCase()}"> <p class="symbol"> ${
+          company.symbol
+        } </p> <p class="companyName"> ${
+          company.name
+        } </p> <p class="sectorLabel"> ${
+          company.sector
+        } </p> <p class="rank ${toCamelCase(company.sector)}Gradient"> ${i +
+          1 +
+          page * 20} </p> ${getSVG(
+          company,
+          0.5,
+          i
+        )} <table cellspacing="0"> <tr> <td> <p class="statValue"> ${
+          company.scoreRank
+        }<sup>${getRankSuffix(
+          company.scoreRank
+        )}</sup> </p> <p class="statDesc"> Overall </p> </td> <td> <p class="statValue"> ${
+          company.scoreSectorRank
+        }<sup>${getRankSuffix(
+          company.scoreSectorRank
+        )}</sup> </p> <p class="statDesc"> In Sector </p> </td> <td> <p class="statValue"> ${
+          company.saleScoreRank
+        }<sup>${getRankSuffix(
+          company.saleScoreRank
+        )}</sup> </p> <p class="statDesc"> Best Discount </p> </td> </tr> <tr> <td> <p class="statValue"> ${
+          company.r2Rank
+        }<sup>${getRankSuffix(
+          company.r2Rank
+        )}</sup> </p> <p class="statDesc"> Least Volatile </p> </td> <td> <p class="statValue"> ${Math.round(
+          company.roi * 100
+        )}<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </td> <td> <p class="statValue"> $${getFormattedMarketCap(
+          company.marketCap
+        )}<sup>${getMarketCapSuffix(
+          company.marketCap
+        )}</sup> </p> <p class="statDesc"> Market Cap. </p> </td> </tr> </table> </a>`;
+        $("#companies").prepend(html);
+      }
+      $(".loader").css("display", "none");
+      $("div.needsToRender").removeClass("invisible");
     }
-  }
-});
+  });
+}
 
 if (page == 0) {
   $("#first, #prev").addClass("inactive");
@@ -96,15 +124,25 @@ $("#prev").click(function() {
 });
 
 $("#next").click(function() {
-  if (numPages > 0) goToNewUrl(sector, rank, page + 1);
+  if ($(this).children(".invisible").length == 1) {
+    // has invisible pro marker
+    if (page < totalPages - 1) goToNewUrl(sector, rank, page + 1);
+  } else {
+    window.location.href = "/pro";
+  }
 });
 
 $("#last").click(function() {
-  if (numPages > 0) goToNewUrl(sector, rank, numPages - 1);
+  if ($(this).children(".invisible").length == 1) {
+    // has invisible pro marker
+    if (page < totalPages - 1) goToNewUrl(sector, rank, "last");
+  } else {
+    window.location.href = "/pro";
+  }
 });
 
 function goToNewUrl(sector, rank, page) {
-  page = Math.min(numPages - 1, Math.max(0, page));
+  if (page != "last") page = Math.max(0, page);
   var baseUrl = window.location.href.split("?")[0];
   window.location.replace(
     baseUrl + `?sector=${sector}&rank=${rank}&page=${page}`

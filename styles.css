@@ -6,10 +6,11 @@ h3 {
 }
 
 .subheader {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 400;
   opacity: 0.5;
   margin-top: 20px;
+  line-height: 160%;
 }
 
 h4 {
@@ -72,6 +73,12 @@ h4 {
   }
 }
 
+/* @media screen and (max-width: 800px) {
+  .sector {
+    flex-wrap: nowrap;
+  }
+} */
+
 .sectorNameHolder {
   width: 100%;
   display: flex;
@@ -89,7 +96,8 @@ h4 {
 .sector .company {
   margin: 10px;
   padding: 16px 20px;
-  min-height: 70px;
+  min-height: 80px;
+  min-width: 100px;
 }
 
 .viewMore {
@@ -98,6 +106,7 @@ h4 {
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0.5;
+  line-height: 150%;
 }
 
 .symbol {
@@ -172,6 +181,33 @@ svg {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.proLabel {
+  background-color: #667ce6;
+  padding: 14px 18px 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: white !important;
+  margin: 0 6px;
+}
+
+.goPro {
+  font-size: 36px;
+  top: 40px;
+}
+
+.seePro {
+  font-size: 20px;
+  padding: 18px 26px 16px 26px;
+  border-radius: 8px;
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.12);
+  margin-top: 40px;
+  transition: box-shadow 0.2s ease;
+}
+
+.seePro:hover {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 500px) {

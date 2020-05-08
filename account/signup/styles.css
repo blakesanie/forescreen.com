@@ -4,65 +4,57 @@
   align-items: center;
 }
 
-#conent * {
+#content * {
   text-align: center;
 }
 
 h3 {
-  font-size: 34px;
-  text-align: center;
-  margin: 60px 0 0px 0;
+  font-size: 30px;
+  margin: 50px 0;
 }
 
 h4 {
   font-size: 24px;
-  margin-top: 30px;
 }
 
-.desc {
-  font-size: 24px;
-  margin-top: 60px;
-  margin-bottom: 40px;
+input {
+  font-size: 18px;
+  width: 100%;
+  max-width: 320px;
+  padding-top: 14px;
+  padding-bottom: 9px;
+  border-radius: 8px;
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.1);
+  border: none;
+  margin-top: 15px;
+  margin-bottom: 30px;
 }
 
-.action {
+.submit {
   font-size: 22px;
   padding: 16px 20px 12px 20px;
   border-radius: 8px;
   margin: 0 6px;
   font-weight: 600;
+  margin-top: 20px;
   border-radius: 12px;
   border: 4px solid #667ce6;
   transition: color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
   cursor: pointer;
 }
 
-.action:hover {
+.submit:hover {
   border: 4px solid transparent;
   background-color: #667ce6;
   color: white !important;
 }
 
-#why {
-  margin-top: 20px;
-  color: #999 !important;
-  transition: opacity 0.2s ease;
+#other {
   font-size: 16px;
-  margin-bottom: 40px;
-}
-
-#why:hover,
-.userOperation:hover {
-  opacity: 0.5;
-}
-
-.userOperation {
-  margin-top: 14px;
-  color: #999 !important;
+  margin-top: 30px;
   transition: opacity 0.2s ease;
-  font-size: 14px;
-  cursor: pointer;
 }
 
-.needsFetchUser {
+#other:hover {
+  opacity: 0.4;
 }

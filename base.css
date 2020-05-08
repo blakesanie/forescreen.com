@@ -9,7 +9,7 @@
 
 html,
 body {
-  background-color: #f0f0fb;
+  background-color: #f6f6ff;
   max-width: 100vw;
   overflow-x: hidden;
 }
@@ -61,6 +61,10 @@ h2 {
   filter: opacity(0.4) drop-shadow(0 0 0 #8a9be7) saturate(600%) !important;
 }
 
+.active {
+  pointer-events: none;
+}
+
 #nav {
   position: absolute;
   top: 0;
@@ -76,8 +80,8 @@ h2 {
   width: 20px;
   margin-left: 8px;
   margin-right: 20px;
-  filter: opacity(0.16);
-  transition: filter 0.2s ease;
+  filter: opacity(0.14);
+  /* transition: filter 0.5s ease; */
   margin-top: -4px;
 }
 
@@ -89,13 +93,13 @@ h2 {
   /* padding: 5px 0; */
   display: flex;
   align-items: center;
-  margin: 5px 0;
+  margin: 4.5px 0;
   justify-content: flex-end;
 }
 
 h5 {
   font-size: 13px;
-  opacity: 0.3;
+  opacity: 0.2;
   font-weight: 600;
   transition: opacity 0.2s ease;
 }
@@ -131,7 +135,8 @@ h6 {
   letter-spacing: 3px;
 }
 
-.needsToRender {
+.needsToRender,
+.authInvolved {
   transition: opacity 0.3s ease;
 }
 
@@ -163,6 +168,26 @@ sup {
 
 .strong {
   font-weight: 600;
+}
+
+.proMarker {
+  /* position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%); */
+  margin-left: 10px;
+  transform: translateY(-6%);
+  font-weight: 600;
+  font-size: 12px;
+  background-color: #667ce6;
+  color: white !important;
+  padding: 8px 10px 5px 10px;
+  border-radius: 8px;
+  line-height: 100%;
+  display: none;
+}
+
+.proMarker:hover {
 }
 
 @media screen and (max-width: 500px) {

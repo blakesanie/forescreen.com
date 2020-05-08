@@ -18,7 +18,7 @@ function getSymbolData(symbol) {
       } else {
         data = data[0];
         console.log(data);
-        $(".needsToRender").append(
+        $("div.needsToRender").append(
           `<p class="name">${data.name}</p><p class="sector">${
             data.sector
           }</p>${getSVG(data, 0.3, 1, 0.3, 0.3)}
@@ -69,22 +69,22 @@ function getSymbolData(symbol) {
         });
       }
       $(".loader").css("display", "none");
-      $(".needsToRender").removeClass("invisible");
+      $("div.needsToRender").removeClass("invisible");
     }
   });
 }
 
 function symbolNotFound() {
-  $(".needsToRender").append(
+  $("div.needsToRender").append(
     `<p class="notFoundText"><span class="strong">Hmm... we're not tracking this symbol.</span><br /><br />This may be because the stock has:</p><ol><li>Less than five years of trading history</li><li>low market capitalization</li><li>minimal daily trading volume</li><li>irregular trading/price patterns</li></ol>`
   );
 }
 
 function welcomeMessage() {
-  $(".needsToRender").append(
+  $("div.needsToRender").append(
     `<p class="notFoundText"><span>Enter a stock symbol to see our analysis.</span></p>`
   );
-  $(".needsToRender").removeClass("invisible");
+  $("div.needsToRender").removeClass("invisible");
 }
 
 function goToNewUrl(symbol) {
