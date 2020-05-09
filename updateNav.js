@@ -1,5 +1,3 @@
-var isProTested = false;
-
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     if (user.displayName.length > 0) {
@@ -12,7 +10,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     ref.on("value", function(snapshot) {
       if (snapshot.val()) {
         var expiration = snapshot.val().expiration;
-        if (new Date(expiration) < new Date()) {
+        if (new Date(expiration) < new Date() || snapshot.val() === false) {
           showProMarkers();
         } else {
           removeProMarkers();
@@ -20,12 +18,10 @@ firebase.auth().onAuthStateChanged(function(user) {
       } else {
         showProMarkers();
       }
-      isProTested = true;
       $(".authInvolved").removeClass("invisible");
     });
   } else {
     showProMarkers();
-    isProTested = true;
     $(".authInvolved").removeClass("invisible");
   }
 });
@@ -33,9 +29,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 function showProMarkers() {
   $(".proMarker").css("display", "inline");
   $(".proMarker").removeClass("invisible");
+  $(".goPro").css("display", "block");
 }
 
 function removeProMarkers() {
   $(".proMarker").css("display", "none");
   $(".proMarker").addClass("invisible");
+  $(".goPro").css("display", "none");
 }

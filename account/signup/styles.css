@@ -17,6 +17,14 @@ h4 {
   font-size: 24px;
 }
 
+p.asterisk {
+  font-size: 12px;
+  opacity: 0.5;
+  line-height: 150%;
+  margin-top: 5px;
+  margin-bottom: -5px;
+}
+
 input {
   font-size: 18px;
   width: 100%;

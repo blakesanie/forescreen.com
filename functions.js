@@ -1,6 +1,6 @@
 console.log("here");
 $.ajax({
-  url: "http://localhost:3000/overview/",
+  url: "http://stock-ranking.herokuapp.com/overview/",
   success: function(companies) {
     console.log(companies);
     var overall = [];

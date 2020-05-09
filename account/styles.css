@@ -15,13 +15,26 @@ h3 {
 }
 
 h4 {
-  font-size: 24px;
-  margin-top: 30px;
+  font-size: 16px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 160%;
+}
+
+.resend {
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.resend:hover {
+  opacity: 0.2;
 }
 
 .desc {
   font-size: 24px;
-  margin-top: 60px;
+  margin-top: 50px;
   margin-bottom: 40px;
 }
 
@@ -57,12 +70,23 @@ h4 {
 }
 
 .userOperation {
-  margin-top: 14px;
+  padding: 7px 0;
   color: #999 !important;
   transition: opacity 0.2s ease;
   font-size: 14px;
   cursor: pointer;
 }
 
-.needsFetchUser {
+input.userOperation {
+  border: none;
+  text-align: center;
+  cursor: default;
+}
+
+.verified {
+  color: green !important;
+}
+
+.unverified {
+  color: red !important;
 }

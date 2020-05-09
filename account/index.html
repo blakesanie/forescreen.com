@@ -82,14 +82,15 @@
         <div id="pageBody">
             <div class="adSpace"></div>
             <div id="content" class="needsToRender invisible">
-                <h3 class="strong">Accounts</h3>
+                <h3 class="strong"></h3>
+                <h4></h4>
                 <!-- <h4>Manage subscription</h4> -->
                 <p class="desc">
                     Your free trial ends on ...
                 </p>
-                <a class="action" href="/payment">
+                <p class="action">
                     Become a Pro early!
-                </a>
+                </p>
                 <a href="/pro" id="why">Why become a
                     <span class="strong">Pro</span>
                     member?</a>
@@ -99,9 +100,7 @@
                 <p id="resetPassword" class="userOperation">
                     Reset password
                 </p>
-                <p id="changeName" class="userOperation">
-                    Change name
-                </p>
+                <input id="changeName" type="text" class="userOperation" placeholder="Change name"></input>
                 <p id="unsub" class="userOperation">
                     Unsubscribe
                 </p>
@@ -115,6 +114,7 @@
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
         <script src="/firebaseConfig.js" type="text/javascript"></script>
         <script src="/updateNav.js" type="text/javascript"></script>
+        <script src="https://js.stripe.com/v3"></script>
         <script src="./functions.js" type="text/javascript"></script>
     </body>
 </html>
