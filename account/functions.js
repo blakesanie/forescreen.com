@@ -137,7 +137,9 @@ $("#unsub").click(function() {
     .then(function(token) {
       $.ajax({
         //stock-ranking.herokuapp.com
-        url: `http://localhost:3000/unsubscribe/${encodeURIComponent(token)}`,
+        url: `http://stock-ranking.herokuapp.com/unsubscribe/${encodeURIComponent(
+          token
+        )}`,
         error: function(error) {
           alert("Sorry, an error occurred.");
         },

@@ -44,6 +44,7 @@ select {
 #pageControls {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin-top: 50px;
 }
@@ -90,8 +91,5 @@ select {
     font-size: 3.4vmin;
     margin: 0 1vmin;
     padding: 4vmin 6vmin 3vmin 6vmin;
-  }
-  #pageControls {
-    flex-wrap: wrap;
   }
 }
