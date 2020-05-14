@@ -22,6 +22,7 @@ h4 {
 
 .carousel {
   width: calc(100% + 30px);
+  max-width: 2850px;
   /* background-color: red; */
   overflow-x: scroll;
   padding: 50px calc(30px + 4vw);
@@ -193,8 +194,9 @@ svg {
 }
 
 .goPro {
-  font-size: 36px;
+  font-size: 32px;
   top: 40px;
+  line-height: 200%;
 }
 
 .seePro {
@@ -212,7 +214,7 @@ svg {
 
 @media screen and (max-width: 500px) {
   h3 {
-    font-size: 8vmin !important;
+    font-size: 7.2vmin !important;
     margin-top: 12vmin;
   }
   .subheader {
@@ -224,5 +226,11 @@ svg {
     font-size: 7vmin;
     margin-top: 12vmin;
     margin-bottom: 8vmin;
+  }
+  .goPro {
+    font-size: 7vmin;
+  }
+  .proLabel {
+    padding: 3vmin 4vmin 2vmin 4vmin;
   }
 }

@@ -113,10 +113,10 @@ sup {
 @media screen and (max-width: 500px) {
   #companies {
     margin-top: 7vmin;
-    width: 100vw;
+    width: 100%;
   }
   .company {
-    width: calc(100% - 40px);
+    width: calc(100% - 12px);
     max-width: 360px;
   }
   svg {

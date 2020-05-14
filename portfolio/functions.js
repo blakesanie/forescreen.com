@@ -40,7 +40,7 @@ $("textarea").focusout(function() {
     }
 });
 
-$(document).on("keypress", function(e) {
+$(document, "input").on("keydown", function(e) {
   if (
     e.which == 13 &&
     $("textarea").val() != "" &&
@@ -51,6 +51,7 @@ $(document).on("keypress", function(e) {
     } else {
       goToBasicPage();
     }
+    e.preventDefault();
   }
 });
 
@@ -79,7 +80,7 @@ function makeAPICall() {
         .then(function() {
           $.ajax({
             //stock-ranking.herokuapp.com
-            url: `http://stock-ranking.herokuapp.com/portfolioAdvice/${encodeURIComponent(
+            url: `http://localhost:3000/portfolioAdvice/${encodeURIComponent(
               getUserSymbolsString()
             )}/${tokenParam}`,
             statusCode: {

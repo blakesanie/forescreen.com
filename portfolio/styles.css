@@ -18,10 +18,15 @@ h3:not(.proMarker) {
 
 h4 {
   font-size: 18px;
-  margin: 40px 0 20px 0;
+  margin: 40px 0 30px 0;
   max-width: 800px;
   text-align: center;
   line-height: 160%;
+}
+
+.desc {
+  font-size: 16px;
+  opacity: 0.5;
 }
 
 textarea {
@@ -54,10 +59,14 @@ textarea {
     max-width: 90vmin;
   }
   h3 {
-    font-size: 7vmin;
+    font-size: 7vmin !important;
+    margin-top: 12vmin !important;
   }
   h4 {
     font-size: 5vmin;
+  }
+  .desc {
+    font-size: 4.3vmin;
   }
   textarea {
     font-size: 4.5vmin;

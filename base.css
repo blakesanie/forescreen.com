@@ -126,13 +126,36 @@ h5 {
   min-height: calc(100vh - 250px);
 }
 
+.footer {
+  padding: 30px 40px;
+}
+
 h6 {
-  font-size: 20px;
+  font-size: 24px;
   width: 100%;
-  line-height: 80px;
   font-weight: 600;
   text-align: center;
   letter-spacing: 3px;
+  margin-top: 4px;
+}
+
+.footerLinks {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.footerLinks a {
+  font-size: 14px;
+  padding: 6px 14px;
+  transition: opacity 0.2s ease;
+  opacity: 0.5;
+}
+
+.footerLinks a:hover {
+  opacity: 0.2;
 }
 
 .needsToRender,
@@ -176,7 +199,7 @@ sup {
   left: 50%;
   transform: translateX(-50%); */
   margin-left: 10px;
-  transform: translateY(-6%);
+  transform: translateY(-12%);
   font-weight: 600;
   font-size: 12px;
   background-color: #667ce6;
@@ -188,6 +211,10 @@ sup {
 }
 
 .proMarker:hover {
+}
+
+.beta {
+  font-weight: 400;
 }
 
 @media screen and (max-width: 500px) {
@@ -223,8 +250,7 @@ sup {
     padding-bottom: 14vmin;
   }
   h6 {
-    font-size: 5vmin;
-    line-height: 20vmin;
+    font-size: 6vmin;
     letter-spacing: 1.4vmin;
   }
 }

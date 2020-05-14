@@ -48,6 +48,10 @@ select {
   margin-top: 50px;
 }
 
+.controlGroup {
+  display: flex;
+}
+
 #pageControls a:not(.proMarker) {
   display: flex;
   align-items: center;
@@ -70,7 +74,7 @@ select {
 
 @media screen and (max-width: 500px) {
   h3 {
-    font-size: 8vmin;
+    font-size: 7vmin;
     margin: 12vmin 0;
   }
   h4 {
@@ -86,5 +90,8 @@ select {
     font-size: 3.4vmin;
     margin: 0 1vmin;
     padding: 4vmin 6vmin 3vmin 6vmin;
+  }
+  #pageControls {
+    flex-wrap: wrap;
   }
 }

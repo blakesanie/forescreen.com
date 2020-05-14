@@ -51,7 +51,8 @@
         <div id="header">
             <a id="logoAnchor" href="/">
                 <img src="/stockRankingLogo.svg" id="logo"/>
-                <h1>Forescreen</h1>
+                <h1>Forescreen<sup class="beta">β</sup>
+                </h1>
                 <h2>Intelligent long-term investment tools</h2>
                 <!-- <h2>Fortify your portfolio for the long-term</h2> -->
             </a>
@@ -88,7 +89,7 @@
                 <h3 class="strong pro">Build your Portfolio</h3>
                 <h4>List the symbols you currently own</h4>
                 <textarea placeholder="MSFT, AAPL, V, MA" rows="1"></textarea>
-                <h4>Our cutting-edge algorithm naturally takes into account the sectors and industries you already own for optimal diversification.</h4>
+                <h4 class="desc">Our cutting-edge algorithm naturally takes into account the sectors and industries you already own for optimal diversification.</h4>
                 <div class="loader" style="display: none;">Loading...</div>
                 <div id="companies" class="needsToRender invisible">
                     <h3>We recommend you aquire the following:<br/>
@@ -97,7 +98,18 @@
             </div>
             <div class="adSpace"></div>
         </div>
-        <h6>Forescreen</h6>
+        <div class="footer">
+            <h6>Forescreen</h6>
+            <div class="footerLinks">
+                <a href="/">Home</a>
+                <a href="/explore">Explore</a>
+                <a href="/quote">Lookup</a>
+                <a href="/portfolio">Portfolio</a>
+                <a href="/account">Account</a>
+                <a href="/pro">Pro</a>
+                <a href="mailto:blakesanie@gmail.com">Support</a>
+            </div>
+        </div>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>

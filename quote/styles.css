@@ -66,7 +66,7 @@ svg {
 }
 
 .statsHolder:nth-of-type(1) .stat {
-  margin: 0 24px;
+  margin: 10px 24px;
 }
 
 .stat {
@@ -131,6 +131,7 @@ li {
 @media screen and (max-width: 500px) {
   h3 {
     font-size: 7vmin;
+    margin-top: 12vmin;
   }
   input {
     font-size: 6vmin;
@@ -167,9 +168,8 @@ li {
   #tradingview_e59b1 div {
     height: 200vmin !important;
   }
-  .notFoundText,
-  .strong {
-    font-size: 6vmin;
+  .notFoundText {
+    font-size: 5vmin;
   }
   li {
     font-size: 3.4vmin;

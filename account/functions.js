@@ -11,21 +11,22 @@ firebase.auth().onAuthStateChanged(function(user) {
     ref
       .once("value", function(snapshot) {
         var now = new Date();
-        var isPro = snapshot.val().isPro;
+        var isPro = snapshot.val().isPro ? true : false;
+        var tempDate = new Date();
+        var time = snapshot.val().trialExpiration
+          ? new Date(snapshot.val().trialExpiration)
+          : tempDate.setDate(tempDate.getDate() + 7);
         if (isPro === true) {
           $(".desc").text(`🥂 You're a Pro member! 🍾`);
           $(".action").css("display", "none");
           $("#why").css("display", "none");
-        } else if (new Date(snapshot.val().trialExpiration) > now) {
-          var time = new Date(snapshot.val().trialExpiration);
+        } else if (time > now) {
           $(".desc").text(
             `⏳ Your free trial ends on ${time.getMonth() +
               1}/${time.getDate() + 1}/${time.getFullYear() % 100} ⏳`
           );
-
           $("#unsub").css("display", "none");
         } else {
-          var time = new Date(snapshot.val().trialExpiration);
           $(".desc").text(
             `⌛ Your free trial ended on ${time.getMonth() +
               1}/${time.getDate() + 1}/${time.getFullYear() % 100} ⌛`
@@ -58,10 +59,10 @@ $(document).on("click", ".resend", function() {
 });
 
 $(".action").click(function() {
-  if (firebase.auth().currentUser.emailVerified === false) {
-    alert("You need to verify your email before becoming a Pro member");
-    return;
-  }
+  // if (firebase.auth().currentUser.emailVerified === false) {
+  //   alert("You need to verify your email before becoming a Pro member");
+  //   return;
+  // }
   var stripe = Stripe("pk_test_Th4JkFYAic5iEtvkKBf1cTv600fkIT8gwT"); //Stripe("pk_live_nL2eBNFYDbE9gT18kWyPB92y00QpdTDTk5");
   var checkoutButton = document.getElementById(
     "checkout-button-plan_HF3C1YRHG8Ttiu"
@@ -94,17 +95,27 @@ $(".action").click(function() {
 });
 
 $("#changeName").focusout(function() {
-  if ($(this).val() != "") {
+  changeName();
+});
+
+$("#changeName").on("keypress", function(e) {
+  if (e.which === 13) {
+    changeName();
+  }
+});
+
+function changeName() {
+  if ($("#changeName").val() != "") {
     firebase
       .auth()
       .currentUser.updateProfile({
-        displayName: $(this).val()
+        displayName: $("#changeName").val()
       })
       .then(function() {
         location.reload();
       });
   }
-});
+}
 
 $("#resetPassword").click(function() {
   firebase
@@ -115,5 +126,27 @@ $("#resetPassword").click(function() {
     })
     .catch(function(error) {
       alert("We've encountered an error");
+    });
+});
+
+$("#unsub").click(function() {
+  alert("try to unsub");
+  firebase
+    .auth()
+    .currentUser.getIdToken(true)
+    .then(function(token) {
+      $.ajax({
+        //stock-ranking.herokuapp.com
+        url: `http://localhost:3000/unsubscribe/${encodeURIComponent(token)}`,
+        error: function(error) {
+          alert("Sorry, an error occurred.");
+        },
+        success: function(result) {
+          alert(
+            "Success! Your subscription has been set to terminate at the end of the current payment term."
+          );
+          location.reload();
+        }
+      });
     });
 });

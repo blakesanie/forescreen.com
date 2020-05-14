@@ -1,4 +1,8 @@
 $(".submit").click(function() {
+  submit();
+});
+
+function submit() {
   if ($("#email").val().length == 0) {
     alert("Please enter your email address");
     return;
@@ -15,7 +19,7 @@ $(".submit").click(function() {
       var errorMessage = error.message;
       alert(errorMessage);
     });
-});
+}
 
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
@@ -28,3 +32,9 @@ firebase.auth().onAuthStateChanged(function(user) {
 function goToAccountPage() {
   window.location.href = "/account";
 }
+
+$(document).on("keydown", function(e) {
+  if (e.which == 13) {
+    submit();
+  }
+});
