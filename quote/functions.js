@@ -9,7 +9,7 @@ if (urlParams.symbol) {
 function getSymbolData(symbol) {
   $(".loader").css("display", "block");
   $.ajax({
-    url: `http://localhost:3000/quote/${encodeURIComponent(
+    url: `http://stock-ranking.herokuapp.com/quote/${encodeURIComponent(
       symbol.toUpperCase()
     )}`,
     success: function(data) {

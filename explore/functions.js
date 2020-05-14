@@ -44,7 +44,7 @@ var totalPages = 0;
 function makeAPICall(tokenParam) {
   $.ajax({
     // stock-ranking.herokuapp.com
-    url: `http://localhost:3000/explore/${encodeURIComponent(
+    url: `http://stock-ranking.herokuapp.com/explore/${encodeURIComponent(
       toNormalCase(sector)
     )}/${rank}/${page}${tokenParam}`,
     error: function(error) {

@@ -1,6 +1,6 @@
 console.log("here");
 $.ajax({
-  url: "http://localhost:3000/overview/", //stock-ranking.herokuapp.com
+  url: "http://stock-ranking.herokuapp.com/overview/", //stock-ranking.herokuapp.com
   success: function(companies) {
     console.log(companies);
     var overall = [];
@@ -32,11 +32,21 @@ $.ajax({
         return b.scoreSectorRank - a.scoreSectorRank;
       });
     }
-    for (var i = 0; i < overall.length; i++) {
-      renderCompany(overall[i], ".overall", "scoreRank", i + "id");
+    for (var i = overall.length - 5; i < overall.length; i++) {
+      renderCompany(
+        overall[i],
+        ".overall .companyCenterHolder",
+        "scoreRank",
+        i + "id"
+      );
     }
-    for (var i = 0; i < topSales.length; i++) {
-      renderCompany(topSales[i], ".topSales", "saleScoreRank", -i + "id");
+    for (var i = topSales.length - 5; i < topSales.length; i++) {
+      renderCompany(
+        topSales[i],
+        ".topSales .companyCenterHolder",
+        "saleScoreRank",
+        -i + "id"
+      );
     }
     var sectorNames = Object.keys(sectors);
     sectorNames.sort();
