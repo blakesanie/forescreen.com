@@ -164,7 +164,9 @@ $("#unsub").click(function() {
 function getLikedStocks() {
   $.ajax({
     // stock-ranking.herokuapp.com
-    url: `http://localhost:3001/likedStocks/${firebase.auth().currentUser.uid}`,
+    url: `http://stock-ranking.herokuapp.com/likedStocks/${
+      firebase.auth().currentUser.uid
+    }`,
     error: function(error) {
       console.error(error);
     },
