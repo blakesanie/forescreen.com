@@ -1,17 +1,20 @@
 var urlParams = getUrlVars();
 if (urlParams.symbol) {
   $("input").val(urlParams.symbol.toUpperCase());
-  getSymbolData(urlParams.symbol);
 } else {
   welcomeMessage();
 }
+
+firebase.auth().onAuthStateChanged(function(user) {
+  getSymbolData(urlParams.symbol);
+});
 
 function getSymbolData(symbol) {
   $(".loader").css("display", "block");
   $.ajax({
     url: `http://stock-ranking.herokuapp.com/quote/${encodeURIComponent(
       symbol.toUpperCase()
-    )}`,
+    )}/${firebase.auth().currentUser ? firebase.auth().currentUser.uid : ""}`,
     success: function(data) {
       if (data.length == 0) {
         symbolNotFound();
@@ -19,7 +22,11 @@ function getSymbolData(symbol) {
         data = data[0];
         console.log(data);
         $("div.needsToRender").append(
-          `<p class="name">${data.name}</p><p class="sector">${
+          `<p class="name symbol${symbol.toUpperCase()}">${
+            data.name
+          }<span class="likeHolder"><img class="outline" src="https://img.icons8.com/material-outlined/96/000000/like.png"/><img class="foreground ${
+            data.liked ? "liked" : ""
+          }" src="https://img.icons8.com/material/96/000000/like--v1.png"/></span></p><p class="sector">${
             data.sector
           }</p>${getSVG(data, 0.3, 1, 0.3, 0.3)}
     <div class="statsHolder"><div class="stat"> <p class="statValue">${Math.round(
@@ -73,6 +80,36 @@ function getSymbolData(symbol) {
     }
   });
 }
+
+$("body").on("click", ".likeHolder .foreground", function(e) {
+  e.preventDefault();
+  var symbol = urlParams.symbol.toUpperCase();
+  var button = $(e.target);
+  if (button.hasClass("liked")) {
+    var ref = firebase
+      .database()
+      .ref(`users/${firebase.auth().currentUser.uid}/likes/${symbol}`);
+    ref.remove();
+    button.removeClass("liked");
+  } else {
+    if (firebase.auth().currentUser) {
+      var ref = firebase
+        .database()
+        .ref(`users/${firebase.auth().currentUser.uid}/likes`);
+      ref
+        .update({ [symbol]: true })
+        .then(function() {
+          console.log($(this));
+          button.addClass("liked");
+        })
+        .catch(function() {
+          alert(`An error occurred when trying to save ${symbol}`);
+        });
+    } else {
+      window.location.href = "/account";
+    }
+  }
+});
 
 function symbolNotFound() {
   $("div.needsToRender").append(

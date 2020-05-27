@@ -6,7 +6,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         .find("h5")
         .text(user.displayName);
     }
-    var ref = firebase.database().ref(`users/${user.uid}`);
+    var ref = firebase.database().ref(`users/${user.uid}/data`);
     ref.on("value", function(snapshot) {
       if (snapshot.val()) {
         var expiration = snapshot.val().expiration;

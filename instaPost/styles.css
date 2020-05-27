@@ -12,7 +12,7 @@ body {
   border: 1px solid green;
   width: 1080px;
   height: 1080px;
-  transform: scale(0.1);
+  /* transform: scale(0.3); */
 }
 
 img {
@@ -29,16 +29,22 @@ img {
 }
 
 h1 {
-  font-size: 100px;
+  font-size: 120px;
   font-weight: 600;
   top: 80px;
   left: 70px;
+  background-color: #ffffff80;
 }
 
 h2 {
-  font-size: 40px;
-  top: 190px;
+  font-size: 44px;
+  top: 220px;
   left: 70px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 700px;
+  background-color: #ffffff80;
 }
 
 #rank {
@@ -72,11 +78,11 @@ sup {
   font-weight: 400;
   font-size: 50%;
   position: static;
-  vertical-align: top
+  vertical-align: top;
 }
 
 sup.strong {
-  font-size: 70%
+  font-size: 70%;
 }
 
 h4 {
@@ -94,8 +100,8 @@ h4 {
 
 #cat {
   position: static;
-    font-size: 70%;
-    padding-bottom: 50px;
+  font-size: 70%;
+  padding-bottom: 50px;
 }
 
 h5 {
@@ -116,6 +122,7 @@ svg {
   width: 1000px;
   left: 40px;
   top: 100px;
+  z-index: -1;
 }
 
 h6 {

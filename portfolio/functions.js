@@ -92,9 +92,13 @@ function makeAPICall() {
               console.log(companies);
               for (var i = companies.length - 1; i >= 0; i--) {
                 var company = companies[i];
-                var html = `<a class="company" href="../quote/?symbol=${company.symbol.toLowerCase()}"> <p class="symbol"> ${
+                var html = `<a class="company symbol${
                   company.symbol
-                } </p> <p class="companyName"> ${
+                }" href="../quote/?symbol=${company.symbol.toLowerCase()}"> <p class="symbol"> ${
+                  company.symbol
+                } <span class="likeHolder"><img class="outline" src="https://img.icons8.com/material-outlined/96/000000/like.png"/><img class="foreground ${
+                  company.liked ? "liked" : ""
+                }" src="https://img.icons8.com/material/96/000000/like--v1.png"/></span></p> <p class="companyName"> ${
                   company.name
                 } </p> <p class="sectorLabel"> ${
                   company.sector

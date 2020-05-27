@@ -1,5 +1,6 @@
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
+    getLikedStocks();
     $("h3").text(`Welcome, ${user.displayName}`);
     var verification = (user.emailVerified ? "" : "un") + "verified";
     var h4Html = `${user.email}, <span class="${verification}">${verification}`;
@@ -7,7 +8,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       h4Html += `<br /><span class="resend">Send verification email</span>`;
     $("h4").html(h4Html);
     var db = firebase.database();
-    var ref = db.ref(`users/${user.uid}`);
+    var ref = db.ref(`users/${user.uid}/data`);
     ref
       .once("value", function(snapshot) {
         var now = new Date();
@@ -130,25 +131,92 @@ $("#resetPassword").click(function() {
 });
 
 $("#unsub").click(function() {
-  alert("try to unsub");
-  firebase
-    .auth()
-    .currentUser.getIdToken(true)
-    .then(function(token) {
-      $.ajax({
-        //stock-ranking.herokuapp.com
-        url: `http://stock-ranking.herokuapp.com/unsubscribe/${encodeURIComponent(
-          token
-        )}`,
-        error: function(error) {
-          alert("Sorry, an error occurred.");
-        },
-        success: function(result) {
-          alert(
-            "Success! Your subscription has been set to terminate at the end of the current payment term."
-          );
-          location.reload();
-        }
+  if (
+    confirm(
+      `Are you sure you want to unsubscribe, ${
+        firebase.auth().currentUser.displayName
+      }?`
+    )
+  ) {
+    firebase
+      .auth()
+      .currentUser.getIdToken(true)
+      .then(function(token) {
+        $.ajax({
+          //stock-ranking.herokuapp.com
+          url: `http://stock-ranking.herokuapp.com/unsubscribe/${encodeURIComponent(
+            token
+          )}`,
+          error: function(error) {
+            alert("Sorry, an error occurred.");
+          },
+          success: function(result) {
+            alert(
+              "Success! Your subscription has been set to terminate at the end of the current payment term."
+            );
+            location.reload();
+          }
+        });
       });
-    });
+  }
 });
+
+function getLikedStocks() {
+  $.ajax({
+    // stock-ranking.herokuapp.com
+    url: `http://stock-ranking.herokuapp.com/likedStocks/${
+      firebase.auth().currentUser.uid
+    }`,
+    error: function(error) {
+      console.error(error);
+    },
+    success: function(result) {
+      var companies = result.sort(function(a, b) {
+        return a.symbol > b.symbol;
+      });
+      console.log(companies);
+      for (var i = companies.length - 1; i >= 0; i--) {
+        var company = companies[i];
+        var html = `<a class="company symbol${
+          company.symbol
+        }" href="../quote/?symbol=${company.symbol.toLowerCase()}"> <p class="symbol"> ${
+          company.symbol
+        } <span class="likeHolder"><img class="outline" src="https://img.icons8.com/material-outlined/96/000000/like.png"/><img class="foreground liked" src="https://img.icons8.com/material/96/000000/like--v1.png"/></span></p> <p class="companyName"> ${
+          company.name
+        } </p> <p class="sectorLabel"> ${
+          company.sector
+        } </p> <p class="rank ${toCamelCase(company.sector)}Gradient"> ${i +
+          1} </p> ${getSVG(
+          company,
+          0.5,
+          i
+        )} <table cellspacing="0"> <tr> <td> <p class="statValue"> ${
+          company.scoreRank
+        }<sup>${getRankSuffix(
+          company.scoreRank
+        )}</sup> </p> <p class="statDesc"> Overall </p> </td> <td> <p class="statValue"> ${
+          company.scoreSectorRank
+        }<sup>${getRankSuffix(
+          company.scoreSectorRank
+        )}</sup> </p> <p class="statDesc"> In Sector </p> </td> <td> <p class="statValue"> ${
+          company.saleScoreRank
+        }<sup>${getRankSuffix(
+          company.saleScoreRank
+        )}</sup> </p> <p class="statDesc"> Best Discount </p> </td> </tr> <tr> <td> <p class="statValue"> ${
+          company.r2Rank
+        }<sup>${getRankSuffix(
+          company.r2Rank
+        )}</sup> </p> <p class="statDesc"> Least Volatile </p> </td> <td> <p class="statValue"> ${Math.round(
+          company.roi * 100
+        )}<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </td> <td> <p class="statValue"> $${getFormattedMarketCap(
+          company.marketCap
+        )}<sup>${getMarketCapSuffix(
+          company.marketCap
+        )}</sup> </p> <p class="statDesc"> Market Cap. </p> </td> </tr> </table> </a>`;
+        $("#likedStocksContainer").prepend(html);
+      }
+      $(".loader").css("display", "none");
+      $("#likedStocksContainer").removeClass("invisible");
+    }
+  });
+}

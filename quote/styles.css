@@ -128,6 +128,37 @@ li {
   display: none;
 }
 
+.likeHolder {
+  left: 14px;
+  top: -1px;
+  cursor: pointer;
+}
+
+.likeHolder img {
+  position: absolute;
+  width: 25px;
+}
+
+.likeHolder .outline {
+  opacity: 0.3;
+}
+
+.likeHolder .foreground {
+  opacity: 0;
+  filter: opacity(0.1) drop-shadow(0 0 0 black) saturate(300%);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+  z-index: 9;
+}
+
+.likeHolder .foreground:not(.liked):hover {
+  opacity: 1;
+  filter: opacity(0.1) drop-shadow(0 0 0 black) saturate(300%);
+}
+.liked {
+  opacity: 1 !important;
+  filter: opacity(0.4) drop-shadow(0 0 0 #ff0051) saturate(300%) !important;
+}
+
 @media screen and (max-width: 500px) {
   h3 {
     font-size: 7vmin;

@@ -1,7 +1,7 @@
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     var db = firebase.database();
-    var ref = db.ref(`users/${user.uid}`);
+    var ref = db.ref(`users/${user.uid}/data`);
     ref
       .once("value", function(snapshot) {
         var now = new Date();
@@ -15,7 +15,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         $("#content").removeClass("invisible");
       });
   } else {
-      window.location.href = "/account/login";
+    window.location.href = "/account/login";
     //window.location.href = "./login";
   }
 });

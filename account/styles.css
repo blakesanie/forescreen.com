@@ -21,6 +21,12 @@ h4 {
   line-height: 160%;
 }
 
+#content h5 {
+  opacity: 1;
+  font-size: 30px;
+  margin-top: 60px;
+}
+
 .resend {
   opacity: 0.5;
   transition: opacity 0.2s ease;
@@ -89,4 +95,13 @@ input.userOperation {
 
 .unverified {
   color: red !important;
+}
+
+#likedStocksContainer {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
 }

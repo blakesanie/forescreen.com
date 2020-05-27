@@ -152,6 +152,36 @@ h4 {
   -webkit-text-fill-color: transparent;
 }
 
+.likeHolder {
+  left: 14px;
+  top: -2px;
+}
+
+.likeHolder img {
+  position: absolute;
+  width: 20px;
+}
+
+.likeHolder .outline {
+  opacity: 0.3;
+}
+
+.likeHolder .foreground {
+  opacity: 0;
+  filter: opacity(0.1) drop-shadow(0 0 0 black) saturate(300%);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+  z-index: 9;
+}
+
+.likeHolder .foreground:not(.liked):hover {
+  opacity: 1;
+  filter: opacity(0.1) drop-shadow(0 0 0 black) saturate(300%);
+}
+.liked {
+  opacity: 1 !important;
+  filter: opacity(0.4) drop-shadow(0 0 0 #ff0051) saturate(300%) !important;
+}
+
 svg {
   width: 100%;
   margin-top: -30px;
