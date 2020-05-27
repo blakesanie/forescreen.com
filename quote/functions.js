@@ -14,7 +14,9 @@ function getSymbolData(symbol) {
   $.ajax({
     url: `http://stock-ranking.herokuapp.com/quote/${encodeURIComponent(
       symbol.toUpperCase()
-    )}/${firebase.auth().currentUser ? firebase.auth().currentUser.uid : ""}`,
+    )}/${
+      firebase.auth().currentUser ? firebase.auth().currentUser.uid : "null"
+    }`,
     success: function(data) {
       if (data.length == 0) {
         symbolNotFound();
