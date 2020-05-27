@@ -164,9 +164,7 @@ $("#unsub").click(function() {
 function getLikedStocks() {
   $.ajax({
     // stock-ranking.herokuapp.com
-    url: `http://stock-ranking.herokuapp.com/likedStocks/${
-      firebase.auth().currentUser.uid
-    }`,
+    url: `http://localhost:3001/likedStocks/${firebase.auth().currentUser.uid}`,
     error: function(error) {
       console.error(error);
     },
@@ -174,6 +172,11 @@ function getLikedStocks() {
       var companies = result.sort(function(a, b) {
         return a.symbol > b.symbol;
       });
+      if (companies.length == 0) {
+        $("#content h5").text("Liked Stocks (none)");
+        $(".loader").css("display", "none");
+        return;
+      }
       console.log(companies);
       for (var i = companies.length - 1; i >= 0; i--) {
         var company = companies[i];
