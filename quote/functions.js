@@ -6,7 +6,9 @@ if (urlParams.symbol) {
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
-  getSymbolData(urlParams.symbol);
+  if (urlParams.symbol) {
+    getSymbolData(urlParams.symbol);
+  }
 });
 
 function getSymbolData(symbol) {
