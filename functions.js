@@ -25,17 +25,17 @@ function makeAPICall() {
       }
       // rank in reverse for prepend
       overall.sort(function(a, b) {
-        return b.scoreRank - a.scoreRank;
+        return a.scoreRank - b.scoreRank;
       });
       topSales.sort(function(a, b) {
-        return b.saleScoreRank - a.saleScoreRank;
+        return a.saleScoreRank - b.saleScoreRank;
       });
       for (var key of Object.keys(sectors)) {
         sectors[key].sort(function(a, b) {
-          return b.scoreSectorRank - a.scoreSectorRank;
+          return a.scoreSectorRank - b.scoreSectorRank;
         });
       }
-      for (var i = overall.length - 5; i < overall.length; i++) {
+      for (var i = 0; i < overall.length && i < 5; i++) {
         renderCompany(
           overall[i],
           ".overall .companyCenterHolder",
@@ -43,7 +43,7 @@ function makeAPICall() {
           i + "id"
         );
       }
-      for (var i = topSales.length - 5; i < topSales.length; i++) {
+      for (var i = 0; i < topSales.length && i < 5; i++) {
         renderCompany(
           topSales[i],
           ".topSales .companyCenterHolder",
@@ -55,11 +55,7 @@ function makeAPICall() {
       sectorNames.sort();
       for (var sector of sectorNames) {
         renderSectorSection(sector);
-        for (
-          var i = sectors[sector].length - 3;
-          i < sectors[sector].length;
-          i++
-        ) {
+        for (var i = 0; i < 3 && i < sectors[sector].length; i++) {
           renderSectorCompany(sectors[sector][i]);
         }
       }
@@ -111,12 +107,13 @@ function renderCompany(company, selector, rankType, id) {
   )}<sup>${getMarketCapSuffix(
     company.marketCap
   )}</sup> </p> <p class="statDesc"> Market Cap. </p> </div> </div> </a>`;
-  $(selector).prepend(html);
+  $(selector + " .company:last-child").before(html);
 }
 
 function renderTopSalesCompany(company) {}
 
 function renderSectorCompany(company) {
+  console.log(company);
   var html = `<a class="company symbol${
     company.symbol
   }" href="./quote/?symbol=${company.symbol}"> <p class="symbol"> ${
@@ -138,7 +135,7 @@ function renderSectorCompany(company) {
   )}<sup>${getMarketCapSuffix(
     company.marketCap
   )}</sup> </p> <p class="statDesc"> Market Cap. </p> </div> </div> </a>`;
-  $("." + toCamelCase(company.sector) + " .sectorNameHolder").after(html);
+  $("." + toCamelCase(company.sector) + " .company:last-child").before(html);
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
