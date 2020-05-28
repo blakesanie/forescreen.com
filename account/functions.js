@@ -12,25 +12,25 @@ firebase.auth().onAuthStateChanged(function(user) {
     ref
       .once("value", function(snapshot) {
         var now = new Date();
-        var isPro = snapshot.val().isPro ? true : false;
+        var isPro = snapshot.val().isPro || false;
         var tempDate = new Date();
         var time = snapshot.val().trialExpiration
           ? new Date(snapshot.val().trialExpiration)
           : tempDate.setDate(tempDate.getDate() + 7);
         if (isPro === true) {
-          $(".desc").text(`🥂 You're a Pro member! 🍾`);
+          $(".desc").text(`You're a Pro member!`);
           $(".action").css("display", "none");
           $("#why").css("display", "none");
         } else if (time > now) {
           $(".desc").text(
-            `⏳ Your free trial ends on ${time.getMonth() +
-              1}/${time.getDate() + 1}/${time.getFullYear() % 100} ⏳`
+            `Your free trial ends on ${time.getMonth() + 1}/${time.getDate() +
+              1}/${time.getFullYear() % 100}`
           );
           $("#unsub").css("display", "none");
         } else {
           $(".desc").text(
-            `⌛ Your free trial ended on ${time.getMonth() +
-              1}/${time.getDate() + 1}/${time.getFullYear() % 100} ⌛`
+            `Your free trial ended on ${time.getMonth() + 1}/${time.getDate() +
+              1}/${time.getFullYear() % 100}`
           );
           $(".action").text("Become a Pro!");
         }
@@ -144,9 +144,7 @@ $("#unsub").click(function() {
       .then(function(token) {
         $.ajax({
           //stock-ranking.herokuapp.com
-          url: `http://stock-ranking.herokuapp.com/unsubscribe/${encodeURIComponent(
-            token
-          )}`,
+          url: `http://localhost:3001/unsubscribe/${encodeURIComponent(token)}`,
           error: function(error) {
             alert("Sorry, an error occurred.");
           },

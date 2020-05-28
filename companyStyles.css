@@ -70,7 +70,7 @@ svg {
   width: 100%;
   margin-top: -40px;
   /* background-color: green; */
-  margin-bottom: -12px !important;
+  margin-bottom: -15px !important;
   stroke-linecap: round;
   overflow: visible;
 }
@@ -111,13 +111,15 @@ sup {
 }
 
 .likeHolder {
-  left: 14px;
-  top: -1px;
+  /* min-height: 100px; */
 }
 
 .likeHolder img {
   position: absolute;
-  width: 25px;
+  height: 90%;
+  top: 50%;
+  transform: translate(60%, -66%);
+  width: auto;
 }
 
 .likeHolder .outline {
@@ -150,7 +152,7 @@ sup {
     max-width: 360px;
   }
   svg {
-    margin-bottom: 10px !important;
+    margin-bottom: 2vmin !important;
   }
   .symbol {
     font-size: 7vmin;
