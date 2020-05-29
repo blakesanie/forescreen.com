@@ -1,7 +1,7 @@
 console.log("here");
 function makeAPICall() {
   $.ajax({
-    url: `http://stock-ranking.herokuapp.com/overview/${
+    url: `http://localhost:3001/overview/${
       firebase.auth().currentUser ? firebase.auth().currentUser.uid : "null"
     }`, //stock-ranking.herokuapp.com
     success: function(companies) {
@@ -40,7 +40,7 @@ function makeAPICall() {
           overall[i],
           ".overall .companyCenterHolder",
           "scoreRank",
-          i + "id"
+          i + "id" + i
         );
       }
       for (var i = 0; i < topSales.length && i < 5; i++) {
@@ -48,7 +48,7 @@ function makeAPICall() {
           topSales[i],
           ".topSales .companyCenterHolder",
           "saleScoreRank",
-          -i + "id"
+          -i + "id" + "ok"
         );
       }
       var sectorNames = Object.keys(sectors);

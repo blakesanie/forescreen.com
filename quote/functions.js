@@ -32,7 +32,7 @@ function getSymbolData(symbol) {
             data.liked ? "liked" : ""
           }" src="https://img.icons8.com/material/96/000000/like--v1.png"/></span></p><p class="sector">${
             data.sector
-          }</p>${getSVG(data, 0.3, 1, 0.3, 0.3)}<h3>Forescreen Insights</h3>
+          }</p>${getSVG(data, 0.3, 1, 0.3, 0.3)}<h3>Investivision Insights</h3>
     <div class="statsHolder"><div class="stat"> <p class="statValue">${Math.round(
       data.roi * 100
     )}<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </div><div class="stat"> <p class="statValue">$${getFormattedMarketCap(
