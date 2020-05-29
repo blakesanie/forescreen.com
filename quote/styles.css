@@ -48,7 +48,7 @@ input::placeholder {
 svg {
   width: 100%;
   margin-top: -40px;
-  margin-bottom: 0px !important;
+  margin-bottom: -20px !important;
 }
 
 .statsHolder {
@@ -57,7 +57,7 @@ svg {
   flex-direction: row;
   justify-content: space-around;
   padding: 10px 0;
-  margin-top: 10px;
+  margin-top: 40px;
 }
 
 .statsHolder:nth-of-type(1) {
@@ -115,17 +115,45 @@ li {
   line-height: 34px;
 }
 
-#tradingview_e59b1 {
-  margin-top: 50px;
+.widgetHolder {
+  margin-top: 40px;
+  min-width: 100%;
+  min-height: 500px;
+  overflow-y: hidden;
+}
+
+iframe {
+  position: absolute;
   width: 100%;
+  min-height: 100% !important;
 }
 
-#tradingview_e59b1 div {
-  width: 100% !important;
+#fundamentalsHolder {
+  height: 830px;
 }
 
-.tradingview-widget-container {
-  display: none;
+#fundamentalsHolder iframe {
+  top: -95px;
+  width: 80% !important; /* to center content */
+  min-width: 500px;
+  transform-origin: top left;
+  transform: scale(1.25);
+}
+
+.censorBar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 100%;
+  background-color: white;
+}
+
+@media screen and (max-width: 700px) {
+  .censorBar {
+    position: fixed;
+    width: 30px;
+  }
 }
 
 .likeHolder {
@@ -157,6 +185,17 @@ li {
 .liked {
   opacity: 1 !important;
   filter: opacity(0.4) drop-shadow(0 0 0 #ff0051) saturate(300%) !important;
+}
+
+.provided {
+  font-size: 12px;
+  opacity: 0.5;
+  margin-top: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.provided:hover {
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 500px) {

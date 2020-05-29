@@ -32,7 +32,7 @@ function getSymbolData(symbol) {
             data.liked ? "liked" : ""
           }" src="https://img.icons8.com/material/96/000000/like--v1.png"/></span></p><p class="sector">${
             data.sector
-          }</p>${getSVG(data, 0.3, 1, 0.3, 0.3)}
+          }</p>${getSVG(data, 0.3, 1, 0.3, 0.3)}<h3>Forescreen Insights</h3>
     <div class="statsHolder"><div class="stat"> <p class="statValue">${Math.round(
       data.roi * 100
     )}<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </div><div class="stat"> <p class="statValue">$${getFormattedMarketCap(
@@ -63,21 +63,14 @@ function getSymbolData(symbol) {
             data.roiRank
           }<sup>${getRankSuffix(
             data.roiRank
-          )}</sup> </p> <p class="statDesc"> Fastest Growing </p> </div></div><h3>Advanced Price Chart</h3><div id="tradingview_e59b1"></div>`
+          )}</sup> </p> <p class="statDesc"> Fastest Growing </p> </div></div><h3>Advanced Price Chart</h3><div class="widgetHolder"><iframe id="tradingview_229cc" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_229cc&amp;symbol=${
+            data.symbol
+          }&amp;interval=D&amp;hidetoptoolbar=1&amp;saveimage=0&amp;toolbarbg=white&amp;studies=%5B%5D&amp;theme=light&amp;style=1&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=127.0.0.1&amp;utm_medium=widget&amp;utm_campaign=chart&amp;utm_term=rng" style="width: 100%; height: 100%; margin: 0 !important; padding: 0 !important;" frameborder="0" allowtransparency="true" allowfullscreen=""></iframe></div></div><h3>Fundamentals</h3><a class="provided" href="https://www.tradingview.com/symbols/${
+            data.symbol
+          }/" target="_blank">Provided by TradingView</a><div class="widgetHolder" id="fundamentalsHolder"><iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://s.tradingview.com/embed-widget/financials/?locale=en#%7B%22symbol%22%3A%22${
+            data.symbol
+          }%22%2C%22colorTheme%22%3A%22light%22%2C%22isTransparent%22%3Atrue%2C%22largeChartUrl%22%3A%22%22%2C%22displayMode%22%3A%22regular%22%2C%22width%22%3A%22480%22%2C%22height%22%3A%22830%22%2C%22utm_source%22%3A%22www.tradingview.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22financials%22%7D" style="box-sizing: border-box; height: calc(798px); width: 480px;"></iframe><div class="censorBar"></div></div>`
         );
-        new TradingView.widget({
-          symbol: symbol,
-          interval: "D",
-          timezone: "Etc/UTC",
-          theme: "light",
-          style: "1",
-          locale: "en",
-          toolbar_bg: "white",
-          enable_publishing: false,
-          hide_top_toolbar: true,
-          save_image: false,
-          container_id: "tradingview_e59b1"
-        });
       }
       $(".loader").css("display", "none");
       $("div.needsToRender").removeClass("invisible");

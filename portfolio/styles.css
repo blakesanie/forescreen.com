@@ -54,6 +54,11 @@ textarea {
   width: 100%;
 }
 
+.proMarker {
+  top: 0 !important;
+  transform: translateY(-0.25em) !important;
+}
+
 @media screen and (max-width: 500px) {
   #companies h3 {
     max-width: 90vmin;

@@ -1,5 +1,12 @@
+var urlParams = getUrlVars();
+
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
+    if (urlParams.success && urlParams.success == 1) {
+      alert(
+        "Congratulations! You've become a PRO member. Your account status will be updated within one minute."
+      );
+    }
     getLikedStocks();
     $("h3").text(`Welcome, ${user.displayName}`);
     var verification = (user.emailVerified ? "" : "un") + "verified";
@@ -76,14 +83,14 @@ $(".action").click(function() {
   // var cancel = parts.join("/");
   stripe
     .redirectToCheckout({
-      items: [{ plan: "plan_HF9578s0VACzdH", quantity: 1 }], //items: [{ plan: "plan_HF3C1YRHG8Ttiu", quantity: 1 }],
+      items: [{ plan: "price_HMgCUjqDMoa9xT", quantity: 1 }], //items: [{ plan: "plan_HF3C1YRHG8Ttiu", quantity: 1 }],
 
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
       // a successful payment.
       // Instead use one of the strategies described in
       // https://stripe.com/docs/payments/checkout/fulfillment
-      successUrl: success,
+      successUrl: success + "/?success=1",
       cancelUrl: success,
       clientReferenceId: firebase.auth().currentUser.uid,
       customerEmail: firebase.auth().currentUser.email
@@ -113,9 +120,14 @@ function changeName() {
         displayName: $("#changeName").val()
       })
       .then(function() {
-        location.reload();
+        window.location.replace(getRefreshUrl());
       });
   }
+}
+
+function getRefreshUrl() {
+  var url = window.location.href.replace("?success=1", "");
+  return url;
 }
 
 $("#resetPassword").click(function() {
@@ -154,7 +166,7 @@ $("#unsub").click(function() {
             alert(
               "Success! Your subscription has been set to terminate at the end of the current payment term."
             );
-            location.reload();
+            location.replace(getRefreshUrl());
           }
         });
       });

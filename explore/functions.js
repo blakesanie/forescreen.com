@@ -32,6 +32,7 @@ firebase.auth().onAuthStateChanged(function(user) {
     });
   } else {
     if (userStartedAuth) {
+      //if user logs out mid page session, show same params but first page
       goToNewUrl(sector, rank, 0);
       return;
     }
@@ -75,7 +76,7 @@ function makeAPICall(tokenParam) {
           company.sector
         } </p> <p class="rank ${toCamelCase(company.sector)}Gradient"> ${i +
           1 +
-          page * 20} </p> ${getSVG(
+          page * 12} </p> ${getSVG(
           company,
           0.5,
           i

@@ -139,6 +139,12 @@ $("body").on("click", ".likeHolder .foreground", function(e) {
     $(`.symbol${symbol} .likeHolder .foreground`).removeClass("liked");
   } else {
     if (firebase.auth().currentUser) {
+      if (proStatusChecked && !hasProStatus) {
+        alert(
+          "Your free trial has expired. Subscribe to the PRO plan to like stocks."
+        );
+        return;
+      }
       var ref = firebase
         .database()
         .ref(`users/${firebase.auth().currentUser.uid}/likes`);

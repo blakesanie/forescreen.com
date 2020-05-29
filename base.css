@@ -27,7 +27,7 @@ body {
 }
 
 * {
-  color: #1a203b !important;
+  color: black !important;
 }
 
 a {
@@ -199,7 +199,8 @@ sup {
   left: 50%;
   transform: translateX(-50%); */
   margin-left: 10px;
-  transform: translateY(-12%);
+  top: calc(50% - 0.15em);
+  transform: translateY(-50%);
   font-weight: 600;
   font-size: 12px;
   background-color: #667ce6;
