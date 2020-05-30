@@ -36,7 +36,7 @@ textarea {
   padding: 23px 20px 19px 20px;
   border-radius: 8px;
   border: none;
-  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.1) !important;
   resize: none;
   text-transform: uppercase;
 }

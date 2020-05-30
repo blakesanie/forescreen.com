@@ -10,13 +10,13 @@ function makeAPICall() {
       var topSales = [];
       var sectors = {};
       for (var company of companies) {
-        if (company.scoreRank < 11) {
+        if (company.scoreRank < 6) {
           overall.push(company);
         }
-        if (company.saleScoreRank < 11) {
+        if (company.saleScoreRank < 6) {
           topSales.push(company);
         }
-        if (company.scoreSectorRank < 6) {
+        if (company.scoreSectorRank < 4) {
           if (sectors[company.sector] === undefined) {
             sectors[company.sector] = [];
           }

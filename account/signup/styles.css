@@ -32,7 +32,7 @@ input {
   padding-top: 14px;
   padding-bottom: 9px;
   border-radius: 8px;
-  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.1) !important;
   border: none;
   margin-top: 15px;
   margin-bottom: 30px;

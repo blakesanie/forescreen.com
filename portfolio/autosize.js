@@ -2,6 +2,7 @@
 	autosize 4.0.2
 	license: MIT
 	http://www.jacklmoore.com/autosize
+    I am using this to auto resize the text box
 */
 !(function(e, t) {
   if ("function" == typeof define && define.amd)

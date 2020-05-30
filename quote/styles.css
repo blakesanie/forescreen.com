@@ -14,7 +14,7 @@ input {
   font-size: 26px;
   text-align: center;
   border: none;
-  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.12) !important;
   height: 60px;
   width: 150px;
   padding-top: 5px;

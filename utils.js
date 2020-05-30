@@ -158,7 +158,7 @@ $("body").on("click", ".likeHolder .foreground", function(e) {
           alert(`An error occurred when trying to save ${symbol}`);
         });
     } else {
-      window.location.href = "/account";
+      window.location.href = "/account/login";
     }
   }
 });
