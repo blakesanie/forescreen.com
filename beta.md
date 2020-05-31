@@ -40,3 +40,11 @@ Testers are divided into two groups. Each group will be asked to test the same f
 ## Testing Payments
 
 Since this is a paid service, we will be testing the underlying payment system. I configured the subscription to have the **minimum recurring cost of $0.50 per week**. During the first week, this payment will be made to begin your subscription. At the start of the second week, (I expect that) your payment method on file will be charged another $0.50 to renew your subscription. Finally, at the end of the second week, I will be asking you to unsubscribe, and no more payments will be made.
+
+---
+
+# Feedback (so far)
+
+- [ ] add timeframe next to line graphs
+- [ ] implement sector-specific explore
+- [ ] enable more features with TradingView chart embed
