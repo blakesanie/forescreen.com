@@ -24,18 +24,18 @@ Each daily testing task should only take a matter of minutes!
 
 Testers are divided into two groups. Each group will be asked to test the same features, but perhaps at different times or in a different way.
 
-| Group 1                 |          Group 2          |
-| ----------------------- | :-----------------------: |
-| max@stroev.com          |     dtmace2@gmail.com     |
-| daksh510@gmail.com      |     michael@sanie.com     |
-| paula@stroeva.com       | alex.sikorsky17@gmail.com |
-| burkedd@miamioh.edu     |    michael@stroev.com     |
-| sofie@stroeva.com       |     jane@stroeva.com      |
+|         Group 1         |          Group 2          |
+| :---------------------: | :-----------------------: |
+|     max@stroev.com      |     dtmace2@gmail.com     |
+|   daksh510@gmail.com    |     michael@sanie.com     |
+|    paula@stroeva.com    | alex.sikorsky17@gmail.com |
+|   burkedd@miamioh.edu   |    michael@stroev.com     |
+|    sofie@stroeva.com    |     jane@stroeva.com      |
 | ramvandermeer@gmail.com |   andypascual@gmail.com   |
-| celine@sanie.com        |  nikhildesh22@gmail.com   |
-| swrgardner3@gmail.com   |   troy.bresch@gmail.com   |
+|    celine@sanie.com     |  nikhildesh22@gmail.com   |
+|  swrgardner3@gmail.com  |   troy.bresch@gmail.com   |
 | hachadtarek@gatech.edu  | mitra.samantha5@gmail.com |
-| riozelaya3@gmail.com    |
+|  riozelaya3@gmail.com   |   dylanyapp98@gmail.com   |
 
 ## Testing Payments
 
