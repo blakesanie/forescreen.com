@@ -63,9 +63,9 @@ function getSymbolData(symbol) {
             data.roiRank
           }<sup>${getRankSuffix(
             data.roiRank
-          )}</sup> </p> <p class="statDesc"> Fastest Growing </p> </div></div><h3>Advanced Price Chart</h3><div class="widgetHolder"><iframe id="tradingview_229cc" src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_229cc&amp;symbol=${
+          )}</sup> </p> <p class="statDesc"> Fastest Growing </p> </div></div><h3>Advanced Price Chart</h3><div class="widgetHolder"><iframe id="tradingview_3362b" src="https://www.tradingview.com/widgetembed/?frameElementId=tradingview_3362b&amp;symbol=${
             data.symbol
-          }&amp;interval=D&amp;hidetoptoolbar=1&amp;saveimage=0&amp;toolbarbg=white&amp;studies=%5B%5D&amp;theme=light&amp;style=1&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=127.0.0.1&amp;utm_medium=widget&amp;utm_campaign=chart&amp;utm_term=rng" style="width: 100%; height: 100%; margin: 0 !important; padding: 0 !important;" frameborder="0" allowtransparency="true" allowfullscreen=""></iframe></div></div><h3>Fundamentals</h3><a class="provided" href="https://www.tradingview.com/symbols/${
+          }&amp;interval=D&amp;hidesidetoolbar=1&amp;symboledit=0&amp;saveimage=0&amp;toolbarbg=f1f3f6&amp;studies=%5B%5D&amp;theme=light&amp;style=1&amp;timezone=Etc%2FUTC&amp;withdateranges=1&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=www.tradingview.com&amp;utm_medium=widget_new&amp;utm_campaign=chart&amp;utm_term=NASDAQ%3AAAPL" style="width: 100%; height: 100%; margin: 0 !important; padding: 0 !important;" frameborder="0" allowtransparency="true" scrolling="no" allowfullscreen=""></iframe></div><h3>Fundamentals</h3><a class="provided" href="https://www.tradingview.com/symbols/${
             data.symbol
           }/" target="_blank">Provided by TradingView</a><div class="widgetHolder" id="fundamentalsHolder"><iframe scrolling="no" allowtransparency="true" frameborder="0" src="https://s.tradingview.com/embed-widget/financials/?locale=en#%7B%22symbol%22%3A%22${
             data.symbol

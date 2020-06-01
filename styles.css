@@ -135,6 +135,13 @@ h4 {
   width: 100%;
 }
 
+.timeFrame {
+  text-align: right;
+  opacity: 0.5;
+  font-size: 12px;
+  margin-top: -12px;
+}
+
 .sectorLabel {
   font-size: 10px;
   opacity: 0.5;

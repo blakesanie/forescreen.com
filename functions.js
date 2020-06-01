@@ -92,11 +92,10 @@ function renderCompany(company, selector, rankType, id) {
     company.sector
   } </p> <p class="rank ${toCamelCase(company.sector)}Gradient"> ${
     company[rankType]
-  } </p> ${getSVG(
-    company,
-    0.5,
-    id
-  )} <div class="statsHolder"> <div class="stat"> <p class="statValue"> ${
+  } </p> ${getSVG(company, 0.5, id)} <p class="timeFrame">${Math.round(
+    ((company.numDataPoints || 520) / 52) * 2
+  ) /
+    2} yrs</p><div class="statsHolder"> <div class="stat"> <p class="statValue"> ${
     company.scoreRank
   }<sup>${getRankSuffix(
     company.scoreRank
