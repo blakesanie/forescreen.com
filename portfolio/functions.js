@@ -80,7 +80,7 @@ function makeAPICall() {
         .then(function() {
           $.ajax({
             //stock-ranking.herokuapp.com
-            url: `http://stock-ranking.herokuapp.com/portfolioAdvice/${encodeURIComponent(
+            url: `https://stock-ranking.herokuapp.com/portfolioAdvice/${encodeURIComponent(
               getUserSymbolsString()
             )}/${tokenParam}`,
             statusCode: {

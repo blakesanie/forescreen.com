@@ -156,7 +156,7 @@ $("#unsub").click(function() {
       .then(function(token) {
         $.ajax({
           //stock-ranking.herokuapp.com
-          url: `http://stock-ranking.herokuapp.com/unsubscribe/${encodeURIComponent(
+          url: `https://stock-ranking.herokuapp.com/unsubscribe/${encodeURIComponent(
             token
           )}`,
           error: function(error) {
@@ -176,7 +176,7 @@ $("#unsub").click(function() {
 function getLikedStocks() {
   $.ajax({
     // stock-ranking.herokuapp.com
-    url: `http://stock-ranking.herokuapp.com/likedStocks/${
+    url: `https://stock-ranking.herokuapp.com/likedStocks/${
       firebase.auth().currentUser.uid
     }`,
     error: function(error) {
