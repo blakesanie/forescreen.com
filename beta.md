@@ -45,6 +45,6 @@ Since this is a paid service, we will be testing the underlying payment system. 
 
 # Feedback (so far)
 
-- [ ] add timeframe next to line graphs
+- [x] add timeframe next to line graphs
 - [ ] implement sector-specific explore
-- [ ] enable more features with TradingView chart embed
+- [x] enable more features with TradingView chart embed
