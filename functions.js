@@ -1,7 +1,7 @@
 console.log("here");
 function makeAPICall() {
   $.ajax({
-    url: `http://stock-ranking.herokuapp.com/overview/${
+    url: `https://stock-ranking.herokuapp.com/overview/${
       firebase.auth().currentUser ? firebase.auth().currentUser.uid : "null"
     }`, //stock-ranking.herokuapp.com
     success: function(companies) {
