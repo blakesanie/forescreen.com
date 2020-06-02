@@ -139,6 +139,7 @@ iframe {
   top: -90px;
   width: 87% !important; /* to center content */
   min-width: 500px;
+  pointer-events: none;
   transform-origin: top left;
   transform: scale(1.15);
 }
