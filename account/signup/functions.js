@@ -33,7 +33,9 @@ firebase.auth().onAuthStateChanged(function(user) {
           displayName: $("#name").val()
         })
         .then(function() {
-          goToAccountPage();
+          user.sendEmailVerification().then(function() {
+            goToAccountPage();
+          });
         });
     } else {
       goToAccountPage();

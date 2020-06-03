@@ -67,10 +67,10 @@ $(document).on("click", ".resend", function() {
 });
 
 $(".action").click(function() {
-  // if (firebase.auth().currentUser.emailVerified === false) {
-  //   alert("You need to verify your email before becoming a Pro member");
-  //   return;
-  // }
+  if (firebase.auth().currentUser.emailVerified === false) {
+    alert("You need to verify your email before becoming a Pro member");
+    return;
+  }
   var stripe = Stripe("pk_live_nL2eBNFYDbE9gT18kWyPB92y00QpdTDTk5");
   var checkoutButton = document.getElementById(
     "checkout-button-plan_HF3C1YRHG8Ttiu"
