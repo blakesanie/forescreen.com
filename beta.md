@@ -2,7 +2,7 @@
 
 _Beginning week of June 1st, lasting ≈2 weeks_
 
-### Thank you for chosing to participate in beta testing for [Investivision.com](http://www.investivision.com)!
+### Thank you for chosing to participate in beta testing for [Investivision.com](https://www.investivision.com)!
 
 ## Purpose
 
