@@ -93,8 +93,11 @@ $("body").on("click", ".likeHolder .foreground", function(e) {
       var ref = firebase
         .database()
         .ref(`users/${firebase.auth().currentUser.uid}/likes`);
+      var obj = {};
+      obj[symbol] = true;
+      console.log(obj);
       ref
-        .update({ [symbol]: true })
+        .update(obj)
         .then(function() {
           console.log($(this));
           button.addClass("liked");
