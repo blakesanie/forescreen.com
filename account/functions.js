@@ -16,14 +16,18 @@ firebase.auth().onAuthStateChanged(function(user) {
     $("h4").html(h4Html);
     var db = firebase.database();
     var ref = db.ref(`users/${user.uid}/data`);
+    var now = new Date();
+    var tempDate = new Date();
+    var time = tempDate.setDate(tempDate.getDate() + 7);
+    var isPro = false;
     ref
       .once("value", function(snapshot) {
-        var now = new Date();
-        var isPro = snapshot.val().isPro || false;
-        var tempDate = new Date();
-        var time = snapshot.val().trialExpiration
-          ? new Date(snapshot.val().trialExpiration)
-          : tempDate.setDate(tempDate.getDate() + 7);
+        isPro = snapshot.val().isPro || false;
+        if (snapshot.val().trialExpiration) {
+          time = new Date(snapshot.val().trialExpiration);
+        }
+      })
+      .then(function() {
         if (isPro === true) {
           $(".desc").text(`You're a Pro member!`);
           $(".action").css("display", "none");
@@ -41,8 +45,6 @@ firebase.auth().onAuthStateChanged(function(user) {
           );
           $(".action").text("Become a Pro!");
         }
-      })
-      .then(function() {
         $("#content").removeClass("invisible");
       });
   } else {
