@@ -117,6 +117,23 @@ body {
   opacity: 0.5;
 }
 
+@media screen and (max-width: 830px) {
+  #header {
+    flex-direction: column;
+    height: 134px;
+    padding: 24px 0;
+    /* background-color: #eee; */
+  }
+  #nav {
+    margin-bottom: -10px;
+    width: 100%;
+  }
+  #nav a {
+    font-size: min(4vmin, 16px);
+    padding: 0 3.5vw;
+  }
+}
+
 /*
 
 
@@ -139,6 +156,8 @@ body {
 #content {
   justify-content: center;
   align-items: center;
+  padding: min(50px, 15vmin) 0;
+  min-height: 450px;
 }
 
 h2 {
@@ -146,13 +165,13 @@ h2 {
   font-weight: 600;
   /* align-self: flex-start; */
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: min(60px, 5vmin);
 }
 
 h3 {
   text-align: center;
-  font-size: 26px;
-  line-height: 160%;
+  font-size: min(22px);
+  line-height: 170%;
   align-self: center;
   color: #000000a0;
   padding: 20px;
