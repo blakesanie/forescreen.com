@@ -18,11 +18,12 @@
   padding: 20px;
   flex-shrink: 0;
   flex-direction: column;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.25s ease;
 }
 
 .company:hover {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.06);
+  transform: scale(1.05);
 }
 
 .symbol {
@@ -39,12 +40,12 @@
   max-width: 174px;
   /* background-color: red; */
   line-height: 20px;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 100;
+  z-index: 10000 !important;
 }
 
 .sectorLabel {
@@ -66,11 +67,14 @@ p.rank {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.svgHolder {
+  margin-top: -40px;
+  margin-bottom: -10px;
+}
+
 svg {
   width: 100%;
-  margin-top: -40px;
-  /* background-color: green; */
-  margin-bottom: -15px !important;
   stroke-linecap: round;
   overflow: visible;
 }
@@ -85,6 +89,7 @@ svg {
 table {
   width: 100%;
   margin-top: 14px;
+  margin-bottom: -4px;
 }
 
 td {

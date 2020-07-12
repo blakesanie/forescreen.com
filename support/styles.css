@@ -1,180 +1,21 @@
-* {
-  margin: 0;
-  padding: 0;
-  position: relative;
-  box-sizing: border-box;
-  font-family: Spartan;
-  font-weight: 400;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-:root {
-  --violet: #697feb;
-  --lightViolet: #f4f5fb;
-  --darkViolet: #0d2ab6;
-}
-
-#header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  /* border-bottom: 1px solid #00000020; */
-  height: 80px;
-  padding: 8px 20px;
-}
-
-.centerAll {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#logo {
-  height: 100%;
-}
-
-#header h1 {
-  font-weight: 600;
-  font-size: 26px;
-  transform: translateY(10%);
-  padding-left: 6px;
-  color: black;
-  letter-spacing: 3px;
-}
-
-#nav a {
-  font-size: 16px;
-  padding: 0 20px;
-  transform: translateY(10%);
-  color: var(--darkViolet);
-  opacity: 0.3;
-  transition: opacity 0.2s ease;
-}
-
-#nav a.active {
-  opacity: 1;
-  font-weight: 400;
-}
-
-#nav a:not(.active):hover {
-  opacity: 1;
-}
-
 #content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#footer {
-  background-color: var(--lightViolet);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 20px;
-}
-
-#footer .group {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 30px;
-}
-
-#footer .group p {
-  font-weight: 600;
-  font-size: 18px;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-#footer .group a {
-  font-size: 13px;
-  padding: 7px 0;
-  opacity: 0.4;
-}
-
-#footer .group a:hover {
-  opacity: 1;
-}
-
-#copyright {
-  width: 100%;
-  text-align: right;
-  font-weight: 600;
-  color: var(--darkViolet);
-  font-size: 12px;
-  margin-top: 14px;
-  opacity: 0.5;
-}
-
-@media screen and (max-width: 830px) {
-  #header {
-    flex-direction: column;
-    height: 134px;
-    padding: 24px 0;
-    /* background-color: #eee; */
-  }
-  #nav {
-    margin-bottom: -10px;
-    width: 100%;
-  }
-  #nav a {
-    font-size: min(4vmin, 16px);
-    padding: 0 3.5vw;
-  }
-}
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-#content {
-  justify-content: center;
-  align-items: center;
-  padding: min(50px, 15vmin) 0;
-  min-height: 450px;
+  padding: 0 40px;
 }
 
 h2 {
   font-size: 30px;
   font-weight: 600;
-  /* align-self: flex-start; */
   text-align: center;
-  margin-bottom: min(60px, 5vmin);
+  margin: 60px 0;
 }
 
 h3 {
   text-align: center;
-  font-size: min(22px);
+  font-size: 20px;
   line-height: 170%;
   align-self: center;
   color: #000000a0;
-  padding: 20px;
+  margin-bottom: 100px;
 }
 
 h3 a {

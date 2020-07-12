@@ -1,7 +1,7 @@
 console.log("here");
 function makeAPICall() {
   $.ajax({
-    url: `https://stock-ranking.herokuapp.com/overview/${
+    url: `http://stock-ranking.herokuapp.com/overview/${
       firebase.auth().currentUser ? firebase.auth().currentUser.uid : "null"
     }`, //stock-ranking.herokuapp.com
     success: function(companies) {
@@ -101,7 +101,7 @@ function renderCompany(company, selector, rankType, id) {
     company.scoreRank
   )}</sup> </p> <p class="statDesc"> Overall </p> </div> <div class="stat"> <p class="statValue"> ${Math.round(
     company.roi * 100
-  )}<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </div> <div class="stat"> <p class="statValue"> $${getFormattedMarketCap(
+  )}<sup>%</sup> </p> <p class="statDesc"> Return </p> </div> <div class="stat"> <p class="statValue"> $${getFormattedMarketCap(
     company.marketCap
   )}<sup>${getMarketCapSuffix(
     company.marketCap

@@ -45,11 +45,16 @@ h4 {
   padding: 20px;
   flex-shrink: 0;
   flex-direction: column;
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.25s ease;
+}
+
+.company *:not(.svgHolder *) {
+  /* z-index: 100; */
 }
 
 .company:hover {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.06);
+  transform: scale(1.05);
 }
 
 .companySpacer {
@@ -119,16 +124,18 @@ h4 {
   font-size: 20px;
   font-weight: 600;
   margin-top: 4px;
+  z-index: 100;
 }
 
 .companyName {
   font-size: 12px;
   width: 140px;
   margin-top: 4px;
-  font-weight: 600;
+  font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
+  z-index: 100;
 }
 
 .sector .companyName {
@@ -147,6 +154,7 @@ h4 {
   opacity: 0.5;
   margin-top: 4px;
   font-weight: 400;
+  z-index: 100;
 }
 
 .rank {
@@ -182,16 +190,24 @@ h4 {
 
 .likeHolder .foreground:not(.liked):hover {
   opacity: 1;
+  z-index: 1000;
   filter: opacity(0.1) drop-shadow(0 0 0 black) saturate(300%);
 }
 .liked {
   opacity: 1 !important;
+  z-index: 1000;
   filter: opacity(0.4) drop-shadow(0 0 0 #ff0051) saturate(300%) !important;
+}
+
+.svgHolder {
+  width: 100%;
+  z-index: 0;
+  margin-top: -30px;
+  margin-bottom: -4px;
 }
 
 svg {
   width: 100%;
-  margin-top: -30px;
   /* background-color: green; */
   stroke-linecap: round;
 }
@@ -200,7 +216,7 @@ svg {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .stat {
@@ -216,7 +232,7 @@ svg {
 }
 
 .statDesc {
-  font-size: 10px;
+  font-size: 11px;
   white-space: nowrap;
 }
 

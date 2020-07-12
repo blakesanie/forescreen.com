@@ -45,13 +45,24 @@ var totalPages = 0;
 function makeAPICall(tokenParam) {
   $.ajax({
     // stock-ranking.herokuapp.com
-    url: `https://stock-ranking.herokuapp.com/explore/${encodeURIComponent(
+    url: `http://stock-ranking.herokuapp.com/explore/${encodeURIComponent(
       toNormalCase(sector)
     )}/${rank}/${page}${tokenParam}`,
     error: function(error) {
       console.error(error);
     },
     success: function(result) {
+      if (result.accessDenied) {
+        alert(result.accessDenied);
+        page = 0;
+        $(".loader").css("display", "none");
+        $(".proMarker").css("display", "none");
+        $("div.needsToRender").removeClass("invisible");
+        window.location.href = "/features";
+        return;
+      }
+      $(".proMarker").remove();
+      console.log();
       var companies = result.companies;
       totalPages = result.numPages;
       page = result.currentPage;
@@ -108,6 +119,7 @@ function makeAPICall(tokenParam) {
         $("#companies").prepend(html);
       }
       $(".loader").css("display", "none");
+      $(".proMarker").css("display", "none");
       $("div.needsToRender").removeClass("invisible");
     }
   });
@@ -126,21 +138,11 @@ $("#prev").click(function() {
 });
 
 $("#next").click(function() {
-  if ($(this).children(".invisible").length == 1) {
-    // has invisible pro marker
-    if (page < totalPages - 1) goToNewUrl(sector, rank, page + 1);
-  } else {
-    window.location.href = "/pro";
-  }
+  if (page < totalPages - 1) goToNewUrl(sector, rank, page + 1);
 });
 
 $("#last").click(function() {
-  if ($(this).children(".invisible").length == 1) {
-    // has invisible pro marker
-    if (page < totalPages - 1) goToNewUrl(sector, rank, "last");
-  } else {
-    window.location.href = "/pro";
-  }
+  if (page < totalPages - 1) goToNewUrl(sector, rank, "last");
 });
 
 function goToNewUrl(sector, rank, page) {

@@ -45,11 +45,13 @@ input::placeholder {
   padding: 10px 20px 5px 20px;
 }
 
-svg {
+.svgHolder {
   width: 100%;
   max-width: 800px;
-  margin-top: -40px;
-  margin-bottom: -20px !important;
+}
+
+svg {
+  width: 100%;
 }
 
 .statsHolder {
@@ -62,12 +64,12 @@ svg {
   max-width: 900px;
 }
 
-.statsHolder:nth-of-type(1) {
+.firstStatsHolder {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   justify-content: center;
 }
 
-.statsHolder:nth-of-type(1) .stat {
+.firstStatsHolder .stat {
   margin: 10px 24px;
 }
 

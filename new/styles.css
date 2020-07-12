@@ -1,0 +1,257 @@
+h3 {
+  text-align: center;
+  font-size: 38px;
+  margin-top: 60px;
+  font-weight: 600;
+}
+
+.subheader {
+  font-size: 20px;
+  font-weight: 400;
+  opacity: 0.5;
+  margin-top: 20px;
+  line-height: 160%;
+}
+
+h4 {
+  text-align: center;
+  font-size: 30px;
+  margin: 70px 0 40px 0;
+  padding: 0 20px;
+}
+
+.carousel {
+  width: calc(100% + 30px);
+  max-width: 2850px;
+  /* background-color: red; */
+  overflow-x: scroll;
+  padding: 50px calc(30px + 4vw);
+  margin: -50px 0; /* trick to allow shadow to not be cut off */
+
+  display: flex;
+}
+
+.companyCenterHolder {
+  display: flex;
+  margin: 0 auto;
+}
+
+.company {
+  width: 230px;
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.06);
+  margin: 0 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  padding: 20px;
+  flex-shrink: 0;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease;
+  color: black;
+  text-decoration: none;
+}
+
+.company:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.06);
+}
+
+.companySpacer {
+  width: 30px;
+  flex-shrink: 0;
+}
+
+#sectors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: -20px;
+}
+
+.sector {
+  /* flex: 1; */
+  max-width: 520px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 0px;
+}
+
+@media screen and (max-width: 1200px) {
+  .sector {
+    max-width: 800px;
+  }
+}
+
+/* @media screen and (max-width: 800px) {
+  .sector {
+    flex-wrap: nowrap;
+  }
+} */
+
+.sectorNameHolder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sector h4 {
+  margin: 40px 0 20px 0;
+  display: inline;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sector .company {
+  margin: 10px;
+  padding: 16px 20px;
+  min-height: 80px;
+  min-width: 100px;
+}
+
+.viewMore {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  line-height: 150%;
+}
+
+.symbol {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.companyName {
+  font-size: 12px;
+  width: 140px;
+  margin-top: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.sector .companyName {
+  width: 100%;
+}
+
+.timeFrame {
+  text-align: right;
+  opacity: 0.5;
+  font-size: 12px;
+  margin-top: -12px;
+}
+
+.sectorLabel {
+  font-size: 10px;
+  opacity: 0.5;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+.rank {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.likeHolder {
+  left: 14px;
+  top: -2px;
+}
+
+.likeHolder img {
+  position: absolute;
+  width: 20px;
+}
+
+.likeHolder .outline {
+  opacity: 0.3;
+}
+
+.likeHolder .foreground {
+  opacity: 0;
+  filter: opacity(0.1) drop-shadow(0 0 0 black) saturate(300%);
+  transition: opacity 0.2s ease, filter 0.2s ease;
+  z-index: 9;
+}
+
+.likeHolder .foreground:not(.liked):hover {
+  opacity: 1;
+  filter: opacity(0.1) drop-shadow(0 0 0 black) saturate(300%);
+}
+.liked {
+  opacity: 1 !important;
+  filter: opacity(0.4) drop-shadow(0 0 0 #ff0051) saturate(300%) !important;
+}
+
+svg {
+  width: 100%;
+  margin-top: -30px;
+  /* background-color: green; */
+  stroke-linecap: round;
+}
+
+.statsHolder {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 7px;
+}
+
+.statValue {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.statDesc {
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.needsToRender {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.proLabel {
+  background-color: #667ce6;
+  padding: 14px 18px 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: white !important;
+  margin: 0 6px;
+}
+
+.goPro {
+  font-size: 32px;
+  top: 40px;
+  line-height: 200%;
+}
+
+.seePro {
+  font-size: 20px;
+  padding: 18px 26px 16px 26px;
+  border-radius: 8px;
+  box-shadow: 0 0 100px 0 rgba(0, 0, 0, 0.12);
+  margin-top: 40px;
+  transition: box-shadow 0.2s ease;
+}
+
+.seePro:hover {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1);
+}

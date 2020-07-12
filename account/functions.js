@@ -18,13 +18,20 @@ firebase.auth().onAuthStateChanged(function(user) {
     var ref = db.ref(`users/${user.uid}/data`);
     var now = new Date();
     var tempDate = new Date();
-    var time = tempDate.setDate(tempDate.getDate() + 7);
+    console.log(tempDate);
+    var time = new Date(tempDate.setDate(tempDate.getDate() + 7));
+    console.log(time);
     var isPro = false;
     ref
       .once("value", function(snapshot) {
-        isPro = snapshot.val().isPro || false;
-        if (snapshot.val().trialExpiration) {
-          time = new Date(snapshot.val().trialExpiration);
+        if (snapshot.val()) {
+          console.log(snapshot.val());
+          if (snapshot.val().isPro) {
+            isPro = snapshot.val().isPro;
+          }
+          if (snapshot.val().trialExpiration) {
+            time = new Date(snapshot.val().trialExpiration);
+          }
         }
       })
       .then(function() {
@@ -45,7 +52,7 @@ firebase.auth().onAuthStateChanged(function(user) {
           );
           $(".action").text("Become a Pro!");
         }
-        $("#content").removeClass("invisible");
+        $(".needsToRender").removeClass("invisible");
       });
   } else {
     window.location.href = "./login";
@@ -158,7 +165,7 @@ $("#unsub").click(function() {
       .then(function(token) {
         $.ajax({
           //stock-ranking.herokuapp.com
-          url: `https://stock-ranking.herokuapp.com/unsubscribe/${encodeURIComponent(
+          url: `http://stock-ranking.herokuapp.com/unsubscribe/${encodeURIComponent(
             token
           )}`,
           error: function(error) {
@@ -178,61 +185,69 @@ $("#unsub").click(function() {
 function getLikedStocks() {
   $.ajax({
     // stock-ranking.herokuapp.com
-    url: `https://stock-ranking.herokuapp.com/likedStocks/${
+    url: `http://stock-ranking.herokuapp.com/likedStocks/${
       firebase.auth().currentUser.uid
     }`,
     error: function(error) {
       console.error(error);
     },
     success: function(result) {
-      var companies = result.sort(function(a, b) {
-        return a.symbol > b.symbol;
-      });
-      if (companies.length == 0) {
-        $("#content h5").text("Liked Stocks (none)");
-        $(".loader").css("display", "none");
-        return;
-      }
-      console.log(companies);
-      for (var i = companies.length - 1; i >= 0; i--) {
-        var company = companies[i];
-        var html = `<a class="company symbol${
-          company.symbol
-        }" href="../quote/?symbol=${company.symbol.toLowerCase()}"> <p class="symbol"> ${
-          company.symbol
-        } <span class="likeHolder"><img class="outline" src="https://img.icons8.com/material-outlined/96/000000/like.png"/><img class="foreground liked" src="https://img.icons8.com/material/96/000000/like--v1.png"/></span></p> <p class="companyName"> ${
-          company.name
-        } </p> <p class="sectorLabel"> ${
-          company.sector
-        } </p> <p class="rank ${toCamelCase(company.sector)}Gradient"> ${i +
-          1} </p> ${getSVG(
-          company,
-          0.5,
-          i
-        )} <table cellspacing="0"> <tr> <td> <p class="statValue"> ${
-          company.scoreRank
-        }<sup>${getRankSuffix(
-          company.scoreRank
-        )}</sup> </p> <p class="statDesc"> Overall </p> </td> <td> <p class="statValue"> ${
-          company.scoreSectorRank
-        }<sup>${getRankSuffix(
-          company.scoreSectorRank
-        )}</sup> </p> <p class="statDesc"> In Sector </p> </td> <td> <p class="statValue"> ${
-          company.saleScoreRank
-        }<sup>${getRankSuffix(
-          company.saleScoreRank
-        )}</sup> </p> <p class="statDesc"> Best Discount </p> </td> </tr> <tr> <td> <p class="statValue"> ${
-          company.r2Rank
-        }<sup>${getRankSuffix(
-          company.r2Rank
-        )}</sup> </p> <p class="statDesc"> Least Volatile </p> </td> <td> <p class="statValue"> ${Math.round(
-          company.roi * 100
-        )}<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </td> <td> <p class="statValue"> $${getFormattedMarketCap(
-          company.marketCap
-        )}<sup>${getMarketCapSuffix(
-          company.marketCap
-        )}</sup> </p> <p class="statDesc"> Market Cap. </p> </td> </tr> </table> </a>`;
-        $("#likedStocksContainer").prepend(html);
+      console.log(result);
+      if (result) {
+        if (result.accessDenied) {
+          $("#content h5").text("Liked Stocks (Not Pro)");
+          $(".loader").css("display", "none");
+          return;
+        }
+        var companies = result.sort(function(a, b) {
+          return a.symbol > b.symbol;
+        });
+        if (companies.length == 0) {
+          $("#content h5").text("Liked Stocks (none)");
+          $(".loader").css("display", "none");
+          return;
+        }
+        console.log(companies);
+        for (var i = companies.length - 1; i >= 0; i--) {
+          var company = companies[i];
+          var html = `<a class="company symbol${
+            company.symbol
+          }" href="../quote/?symbol=${company.symbol.toLowerCase()}"> <p class="symbol"> ${
+            company.symbol
+          } <span class="likeHolder"><img class="outline" src="https://img.icons8.com/material-outlined/96/000000/like.png"/><img class="foreground liked" src="https://img.icons8.com/material/96/000000/like--v1.png"/></span></p> <p class="companyName"> ${
+            company.name
+          } </p> <p class="sectorLabel"> ${
+            company.sector
+          } </p> <p class="rank ${toCamelCase(company.sector)}Gradient"> ${i +
+            1} </p> ${getSVG(
+            company,
+            0.5,
+            i
+          )} <table cellspacing="0"> <tr> <td> <p class="statValue"> ${
+            company.scoreRank
+          }<sup>${getRankSuffix(
+            company.scoreRank
+          )}</sup> </p> <p class="statDesc"> Overall </p> </td> <td> <p class="statValue"> ${
+            company.scoreSectorRank
+          }<sup>${getRankSuffix(
+            company.scoreSectorRank
+          )}</sup> </p> <p class="statDesc"> In Sector </p> </td> <td> <p class="statValue"> ${
+            company.saleScoreRank
+          }<sup>${getRankSuffix(
+            company.saleScoreRank
+          )}</sup> </p> <p class="statDesc"> Best Discount </p> </td> </tr> <tr> <td> <p class="statValue"> ${
+            company.r2Rank
+          }<sup>${getRankSuffix(
+            company.r2Rank
+          )}</sup> </p> <p class="statDesc"> Least Volatile </p> </td> <td> <p class="statValue"> ${Math.round(
+            company.roi * 100
+          )}<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </td> <td> <p class="statValue"> $${getFormattedMarketCap(
+            company.marketCap
+          )}<sup>${getMarketCapSuffix(
+            company.marketCap
+          )}</sup> </p> <p class="statDesc"> Market Cap. </p> </td> </tr> </table> </a>`;
+          $("#likedStocksContainer").prepend(html);
+        }
       }
       $(".loader").css("display", "none");
       $("#likedStocksContainer").removeClass("invisible");

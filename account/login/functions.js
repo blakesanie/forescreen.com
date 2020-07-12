@@ -25,7 +25,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     goToAccountPage();
   } else {
-    $("#content").removeClass("invisible");
+    $(".needsToRender").removeClass("invisible");
   }
 });
 

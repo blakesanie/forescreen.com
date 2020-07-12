@@ -15,6 +15,10 @@ function submit() {
     alert("Your password must be of length 8+");
     return;
   }
+  if (!$("input[type='checkbox']").is(":checked")) {
+    alert("You must acknowledge the Terms and Conditions");
+    return;
+  }
   firebase
     .auth()
     .createUserWithEmailAndPassword($("#email").val(), $("#password").val())
@@ -41,7 +45,7 @@ firebase.auth().onAuthStateChanged(function(user) {
       goToAccountPage();
     }
   } else {
-    $("#content").removeClass("invisible");
+    $(".needsToRender").removeClass("invisible");
   }
 });
 

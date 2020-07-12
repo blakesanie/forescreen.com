@@ -37,9 +37,9 @@
         <meta property="og:image" content="/siteThumb.png">
         <meta property="og:image:type" content="image/png">
         <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="608">
+        <meta property="og:image:height" content="794">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/colors.css" type="text/css">
         <link rel="stylesheet" href="/base.css" type="text/css">
         <link rel="stylesheet" href="./styles.css" type="text/css">
@@ -47,70 +47,83 @@
     </head>
     <body>
         <div id="header">
-            <a id="logoAnchor" href="../">
-                <img src="/stockRankingLogo.svg" id="logo"/>
+            <a class="centerAll" href="/">
+                <img id="logo" src="/newLogo.svg"/>
                 <h1>Investivision<sup class="beta">β</sup>
                 </h1>
-                <h2>Intelligent long-term investment tools</h2>
             </a>
-            <div id="nav">
-                <a class="navItem" href="/">
-                    <h5>Overview</h5>
-                    <img src="https://img.icons8.com/ios-glyphs/90/000000/combo-chart.png"/>
-                </a>
-                <a class="navItem" href="/explore/">
-                    <h5>Explore</h5>
-                    <img src="https://img.icons8.com/ios-glyphs/96/000000/sorting-options.png"/>
-                </a>
-                <a class="navItem" href="/quote/">
-                    <h5>Lookup</h5>
-                    <img src="https://img.icons8.com/material-rounded/96/000000/advanced-search.png"/>
-                </a>
-                <a class="navItem" href="/portfolio/">
-                    <h5>Portfolio</h5>
-                    <img src="https://img.icons8.com/material-rounded/64/000000/doughnut-chart.png"/>
-                </a>
-                <a class="navItem" href="/purpose/">
-                    <h5>Purpose</h5>
-                    <img src="https://img.icons8.com/ios-filled/96/000000/idea.png"/>
-                </a>
-                <a class="navItem active">
-                    <h5>Sign in</h5>
-                    <img src="https://img.icons8.com/ios-glyphs/90/000000/login-as-user.png"/>
-                </a>
+            <div class="centerAll" id="nav">
+                <a href="/features">Features</a>
+                <a href="/">Overview</a>
+                <a href="/explore">Explore</a>
+                <a href="/quote">Lookup</a>
+                <a href="/portfolio">Portfolio</a>
+                <a href="/purpose">Mission</a>
+                <a href="/account" class="active">Account</a>
             </div>
         </div>
-        <div id="pageBody">
-            <div class="adSpace"></div>
-            <div id="content" class="needsToRender invisible">
+        <div id="content">
+            <div id="contentContainer" class="needsToRender invisible">
                 <h3 class="strong">Create an account</h3>
                 <h4>Full name</h4>
                 <input type="text" id="name" placeholder="Bill Ionare"/>
                 <h4>Email</h4>
-                <p class="asterisk">
-                    Used for account info, payments<br/>Cannot be changed once set
-                </p>
+                <!-- <p class="asterisk"> Used for account info, payments<br/>Cannot be changed once set </p> -->
                 <input type="email" id="email" placeholder="bill@ionare.com"/>
                 <h4>Password</h4>
                 <input type="password" id="password" placeholder="8+ characters"/>
+                <div id="termsBox">
+                    <p class="termsText">
+                        <input type="checkbox">
+                        I have read, understood, and agreed<br/>
+                        with the
+                        <a href="/termsandconditions.pdf" target="_blank">Terms and Conditions</a>
+                    </p>
+                </div>
                 <p class="submit strong">
                     Create account
                 </p>
                 <a id="other" href="../login">Have an account? Sign in here</a>
+
             </div>
-            <div class="adSpace"></div>
         </div>
-        <div class="footer">
-            <h6>Investivision</h6>
-            <div class="footerLinks">
-                <a href="/">Home</a>
-                <a href="/explore">Explore</a>
-                <a href="/quote">Lookup</a>
-                <a href="/portfolio">Portfolio</a>
-                <a href="/account">Account</a>
-                <a href="/pro">Pro</a>
-                <a href="mailto:blakesanie@gmail.com">Support</a>
+        <div id="footer">
+            <div class="group">
+                <p>
+                    Investivision
+                </p>
+                <a href="/purpose">Mission Statement</a>
+                <a href="/features">Features</a>
+                <a>Mobile App</a>
             </div>
+            <div class="group">
+                <p>
+                    Tools
+                </p>
+                <a href="/">Market Overview</a>
+                <a href="/explore">Explore Rankings</a>
+                <a href="/quote">Symbol Lookup</a>
+                <a href="/portfolio">Portfolio Builder</a>
+            </div>
+            <div class="group">
+                <p>
+                    Account
+                </p>
+                <a href="/account">View Account</a>
+                <a href="/account">Log In</a>
+                <a href="/account">Sign Up</a>
+            </div>
+            <div class="group">
+                <p>
+                    Support
+                </p>
+                <a href="/support">Contact</a>
+                <a href="/privacy.pdf">Privacy Policy</a>
+                <a href="/termsandconditions.pdf">Terms and Conditions</a>
+            </div>
+            <p id="copyright">
+                Copyright © Blake Sanie
+            </p>
         </div>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>

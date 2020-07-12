@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 function getSymbolData(symbol) {
   $(".loader").css("display", "block");
   $.ajax({
-    url: `https://stock-ranking.herokuapp.com/quote/${encodeURIComponent(
+    url: `http://stock-ranking.herokuapp.com/quote/${encodeURIComponent(
       symbol.toUpperCase()
     )}/${
       firebase.auth().currentUser ? firebase.auth().currentUser.uid : "null"
@@ -33,7 +33,7 @@ function getSymbolData(symbol) {
           }" src="https://img.icons8.com/material/96/000000/like--v1.png"/></span></p><p class="sector">${
             data.sector
           }</p>${getSVG(data, 0.3, 1, 0.3, 0.3)}<h3>Investivision Insights</h3>
-    <div class="statsHolder"><div class="stat"> <p class="statValue">${Math.round(
+    <div class="statsHolder firstStatsHolder"><div class="stat"> <p class="statValue">${Math.round(
       data.roi * 100
     )}<sup>%</sup> </p> <p class="statDesc"> Annual Gain </p> </div><div class="stat"> <p class="statValue">$${getFormattedMarketCap(
             data.marketCap
@@ -106,7 +106,7 @@ $("body").on("click", ".likeHolder .foreground", function(e) {
           alert(`An error occurred when trying to save ${symbol}`);
         });
     } else {
-      window.location.href = "/pro";
+      window.location.href = "/features";
     }
   }
 });

@@ -38,16 +38,41 @@ function getSVG(company, aspectRatio, id, thickness, radius) {
       y: (width - company.closesTruncated[i]) * aspectRatio
     });
   }
-  console.log(coords);
   var path = createRoundedPathString(coords, radius || 0.4);
-  console.log(path);
-  var html = `<svg viewbox="0 0 ${width} ${width *
+  var html = `<div class="svgHolder"><svg viewbox="0 0 ${width} ${width *
     aspectRatio}" xmlns="http://www.w3.org/2000/svg"> <defs> <lineargradient id="grad${id}" x1="0%" y1="0%" x2="100%" y2="0%"> <stop offset="0%" class="${toCamelCase(
     company.sector
   )}Start"/> <stop offset="100%" class="${toCamelCase(
     company.sector
   )}End"//> </lineargradient> </defs> <path d="${path}" stroke="url(#grad${id})" stroke-width="${thickness ||
-    0.9}" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg>`;
+    0.9}" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg><div class="svgCover"></div></div>`;
+  return html;
+}
+
+function getSVGForOverlay(
+  company,
+  className,
+  aspectRatio,
+  min,
+  max,
+  id,
+  thickness,
+  radius
+) {
+  var yRange = max - min;
+  // height / width
+  var width = company.stdCloses.length;
+  var coords = [];
+  for (var i = 0; i < company.stdCloses.length; i++) {
+    coords.push({
+      x: i,
+      y: ((yRange - company.stdCloses[i]) / yRange) * width * aspectRatio
+    });
+  }
+  var path = createRoundedPathString(coords, radius || 0.4);
+  var html = `<div class="svgHolder ${className}"><svg viewbox="0 0 ${width} ${width *
+    aspectRatio}" xmlns="http://www.w3.org/2000/svg"><path d="${path}" stroke-width="${thickness ||
+    0.9}" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg><div class="svgCover"></div></div>`;
   return html;
 }
 

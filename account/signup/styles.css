@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 20px;
+  padding-bottom: 60px;
 }
 
 #content * {
@@ -46,23 +48,51 @@ input {
   font-weight: 600;
   margin-top: 20px;
   border-radius: 12px;
-  border: 4px solid #667ce6;
+  border: 3px dashed var(--middleViolet);
+  background-color: var(--lightViolet);
+  color: var(--violet);
   transition: color 0.2s ease, background-color 0.2s ease, border 0.2s ease;
   cursor: pointer;
 }
 
 .submit:hover {
-  border: 4px solid transparent;
-  background-color: #667ce6;
-  color: white !important;
+  background-color: var(--violet);
+  color: white;
+  border: 3px solid var(--violet);
 }
 
 #other {
   font-size: 16px;
   margin-top: 30px;
+  line-height: 160%;
   transition: opacity 0.2s ease;
 }
 
 #other:hover {
   opacity: 0.4;
+}
+
+#termsBox {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+input[type="checkbox"] {
+  margin: 0;
+  width: 30px;
+}
+
+.termsText {
+  font-size: 14px;
+  line-height: 160%;
+}
+
+.termsText a {
+  color: var(--violet);
+  text-decoration: underline;
+  transition: opacity 0.2s ease;
+}
+
+.termsText a:hover {
+  opacity: 0.5;
 }
