@@ -110,7 +110,7 @@ function makeAPICall() {
           symbolString = getUserSymbolsString();
           $.ajax({
             //stock-ranking.herokuapp.com
-            url: `http://stock-ranking.herokuapp.com/portfolioAdvice/${encodeURIComponent(
+            url: `https://stock-ranking.herokuapp.com/portfolioAdvice/${encodeURIComponent(
               symbolString
             )}/${tokenParam}`,
             success: function(data) {

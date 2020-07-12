@@ -1,6 +1,6 @@
 $.ajax({
   // stock-ranking.herokuapp.com
-  url: `http://stock-ranking.herokuapp.com/insta`,
+  url: `https://stock-ranking.herokuapp.com/insta`,
   error: function(error) {
     console.error(error);
   },
