@@ -49,33 +49,6 @@ function getSVG(company, aspectRatio, id, thickness, radius) {
   return html;
 }
 
-function getSVGForOverlay(
-  company,
-  className,
-  aspectRatio,
-  min,
-  max,
-  id,
-  thickness,
-  radius
-) {
-  var yRange = max - min;
-  // height / width
-  var width = company.stdCloses.length;
-  var coords = [];
-  for (var i = 0; i < company.stdCloses.length; i++) {
-    coords.push({
-      x: i,
-      y: ((yRange - company.stdCloses[i]) / yRange) * width * aspectRatio
-    });
-  }
-  var path = createRoundedPathString(coords, radius || 0.4);
-  var html = `<div class="svgHolder ${className}"><svg viewbox="0 0 ${width} ${width *
-    aspectRatio}" xmlns="http://www.w3.org/2000/svg"><path d="${path}" stroke-width="${thickness ||
-    0.9}" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg><div class="svgCover"></div></div>`;
-  return html;
-}
-
 /**
  * Creates a coordinate path for the Path SVG element with rounded corners
  * @param pathCoords - An array of coordinates in the form [{x: Number, y: Number}, ...]

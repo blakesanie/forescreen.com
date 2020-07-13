@@ -114,11 +114,16 @@ function makeAPICall() {
               symbolString
             )}/${tokenParam}`,
             success: function(data) {
+              console.log(data);
               if (data.accessDenied) {
                 alert(data.accessDenied);
                 $(".loader").css("display", "none");
-                $("div.needsToRender").removeClass("invisible");
-                window.location.href = "/features";
+
+                if (!data.accessDenied.includes("track")) {
+                  window.location.href = "/features";
+                }
+                //
+                // $("div.needsToRender").removeClass("invisible");
                 return;
               }
               buildComparisonChart(data);
@@ -177,54 +182,57 @@ function makeAPICall() {
 }
 
 function buildComparisonChart(data) {
-  console.log(data);
   var minValue = data.suggested[0].stdCloses[0];
   var maxValue = data.suggested[0].stdCloses[0];
+  //var maxRoi = 0;
   for (var stock of data.current.concat(data.suggested)) {
     for (var close of stock.stdCloses) {
       minValue = Math.min(minValue, close);
       maxValue = Math.max(maxValue, close);
     }
+    //maxRoi = Math.max(maxRoi, stock.roi)
   }
   console.log(minValue, maxValue);
-  var aspectRatio = 0.35;
-  var currentSvgs = [];
-  for (var i = 0; i < data.current.length; i++) {
-    var stock = data.current[i];
-    currentSvgs.push(
-      getSVGForOverlay(
-        stock,
-        "current",
-        aspectRatio,
-        minValue,
-        maxValue,
-        i,
-        0.4,
-        0
-      )
-    );
+  var sizes = ["wide", "tall"];
+  var aspectRatios = {
+    wide: 0.45,
+    tall: 1
+  };
+  var svgs = [];
+  for (var size of sizes) {
+    var thickness = size == "wide" ? 0.4 : 0.6;
+    for (var i = 0; i < data.current.length; i++) {
+      var stock = data.current[i];
+      svgs.unshift(
+        getSVGForOverlay(
+          stock,
+          "current " + size,
+          aspectRatios[size],
+          minValue,
+          maxValue,
+          i,
+          thickness,
+          0
+        )
+      );
+    }
+    for (var i = 0; i < data.suggested.length; i++) {
+      var stock = data.suggested[i];
+      svgs.unshift(
+        getSVGForOverlay(
+          stock,
+          "suggested " + size,
+          aspectRatios[size],
+          minValue,
+          maxValue,
+          i,
+          thickness,
+          0
+        )
+      );
+    }
   }
-  var suggestedSvgs = [];
-  for (var i = 0; i < data.suggested.length; i++) {
-    var stock = data.suggested[i];
-    suggestedSvgs.push(
-      getSVGForOverlay(
-        stock,
-        "suggested",
-        aspectRatio,
-        minValue,
-        maxValue,
-        i,
-        0.4,
-        0
-      )
-    );
-  }
-  console.log(currentSvgs, suggestedSvgs);
-  for (var svg of suggestedSvgs) {
-    $("#svgStack").append(svg);
-  }
-  for (var svg of currentSvgs) {
+  for (var svg of svgs) {
     $("#svgStack").append(svg);
   }
   var yRange = maxValue - minValue;
@@ -232,4 +240,72 @@ function buildComparisonChart(data) {
   $("#axis").append(
     `<p class="tick" style="top: ${(maxValue / yRange) * 100}%;">0%</p>`
   );
+  handleOverlaySize();
+  // setTimeout(function() {
+  //   $(".svgCover").remove();
+  // }, 3000);
+}
+
+var threshold = 600;
+function handleOverlaySize() {
+  var width = $(window).width();
+  if (width > threshold) {
+    $(".wide").css("opacity", "1");
+    $(".wide")
+      .eq(0)
+      .css("position", "relative");
+    $(".tall").css("opacity", "0");
+    $(".tall")
+      .eq(0)
+      .css("position", "absolute");
+  } else {
+    $(".wide").css("opacity", "0");
+    $(".wide")
+      .eq(0)
+      .css("position", "absolute");
+    $(".tall").css("opacity", "1");
+    $(".tall")
+      .eq(0)
+      .css("position", "relative");
+  }
+}
+
+$(window).resize(function() {
+  handleOverlaySize();
+});
+
+function getSVGForOverlay(
+  company,
+  className,
+  aspectRatio,
+  min,
+  max,
+  id,
+  thickness,
+  radius
+) {
+  max = max;
+  min = min;
+
+  var yRange = max - min;
+  // height / width
+  var width = company.stdCloses.length;
+  var coords = [];
+  for (var i = 0; i < company.stdCloses.length; i++) {
+    coords.push({
+      x: i,
+      y: ((yRange - company.stdCloses[i]) / yRange) * width * aspectRatio
+    });
+  }
+  var path = createRoundedPathString(coords, radius || 0.4);
+  var suggestedMaxOpacity = 0.5;
+  var styleAttr = `style="opacity: ${
+    className.includes("suggested")
+      ? suggestedMaxOpacity * (1 - 0.04 * Math.pow(id, 1.8))
+      : 1
+  };"`;
+  var html = `<div class="svgHolder ${className}"><svg viewbox="0 0 ${width} ${width *
+    aspectRatio}" xmlns="http://www.w3.org/2000/svg" ${styleAttr}><path d="${path}" stroke-width="${thickness ||
+    0.9}" fill="none" stroke-linejoin="round" stroke-linecap="round"/></svg><div class="svgCover"></div></div>`;
+  return html;
 }

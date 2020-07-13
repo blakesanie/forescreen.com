@@ -13,7 +13,7 @@ h3.potential {
 #svgContainer {
   margin-top: -40px;
   margin-bottom: 10px;
-  width: 80vw;
+  width: 100%;
   max-width: 700px;
   display: flex;
   flex-direction: row;
@@ -37,24 +37,34 @@ h3.potential {
   opacity: 0.5;
 }
 
+#axisLabel {
+  opacity: 1;
+  font-weight: 500;
+  text-align: center;
+  top: 50%;
+}
+
 #svgStack .svgHolder {
   position: absolute;
   width: 100%;
   top: 0;
   margin-top: 0;
+  overflow: visible;
+  padding-bottom: 10px;
 }
-#svgStack .svgHolder:first-child {
+/* #svgStack .svgHolder .wide:first-child {
   position: relative !important;
 }
+#svgStack .svgHolder .tall:first-child {
+  position: relative !important;
+} */
 /* so that height is chosen based on svg */
 #svgStack .current svg {
-  stroke: #ff6255;
-  opacity: 0.8;
+  stroke: #ff4e40;
   overflow: visible;
 }
 #svgStack .suggested svg {
   stroke: var(--darkViolet);
-  opacity: 0.25;
 }
 
 .overlayRange {
