@@ -164,8 +164,8 @@ $("#unsub").click(function() {
       .currentUser.getIdToken(true)
       .then(function(token) {
         $.ajax({
-          //stock-ranking.herokuapp.com
-          url: `https://stock-ranking.herokuapp.com/unsubscribe/${encodeURIComponent(
+          //localhost:3001/v1
+          url: `https://stock-ranking.herokuapp.com/v1/unsubscribe/${encodeURIComponent(
             token
           )}`,
           error: function(error) {
@@ -184,8 +184,8 @@ $("#unsub").click(function() {
 
 function getLikedStocks() {
   $.ajax({
-    // stock-ranking.herokuapp.com
-    url: `https://stock-ranking.herokuapp.com/likedStocks/${
+    // localhost:3001/v1
+    url: `https://stock-ranking.herokuapp.com/v1/likedStocks/${
       firebase.auth().currentUser.uid
     }`,
     error: function(error) {

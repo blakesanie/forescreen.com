@@ -14,7 +14,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 function getSymbolData(symbol) {
   $(".loader").css("display", "block");
   $.ajax({
-    url: `https://stock-ranking.herokuapp.com/quote/${encodeURIComponent(
+    url: `https://stock-ranking.herokuapp.com/v1/quote/${encodeURIComponent(
       symbol.toUpperCase()
     )}/${
       firebase.auth().currentUser ? firebase.auth().currentUser.uid : "null"

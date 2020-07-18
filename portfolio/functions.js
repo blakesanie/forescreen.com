@@ -110,7 +110,7 @@ function makeAPICall() {
           symbolString = getUserSymbolsString();
           $.ajax({
             //stock-ranking.herokuapp.com
-            url: `https://stock-ranking.herokuapp.com/portfolioAdvice/${encodeURIComponent(
+            url: `https://stock-ranking.herokuapp.com/v1/portfolioAdvice/${encodeURIComponent(
               symbolString
             )}/${tokenParam}`,
             success: function(data) {
@@ -182,13 +182,31 @@ function makeAPICall() {
 }
 
 function buildComparisonChart(data) {
-  var minValue = data.suggested[0].stdCloses[0];
-  var maxValue = data.suggested[0].stdCloses[0];
-  //var maxRoi = 0;
-  for (var stock of data.current.concat(data.suggested)) {
-    for (var close of stock.stdCloses) {
-      minValue = Math.min(minValue, close);
-      maxValue = Math.max(maxValue, close);
+  var minValue = 0;
+  var maxValue = 0;
+  var maxTick = 0;
+  var maxRoi = 0;
+  for (var i = 0; i < data.current.length; i++) {
+    for (var j = 0; j < data.current[i].stdCloses.length; j++) {
+      maxTick = Math.max(maxTick, data.current[i].stdCloses[j]);
+      var value = Math.log(data.current[i].stdCloses[j] + 1);
+      value = Math.max(value, 0);
+      console.log(value);
+      data.current[i].stdCloses[j] = value;
+      minValue = Math.min(minValue, value);
+      maxValue = Math.max(maxValue, value);
+      console.log(minValue, maxValue);
+    }
+  }
+  for (var i = 0; i < data.suggested.length; i++) {
+    for (var j = 0; j < data.suggested[i].stdCloses.length; j++) {
+      maxTick = Math.max(maxTick, data.suggested[i].stdCloses[j]);
+      var value = Math.log(data.suggested[i].stdCloses[j] + 1);
+      console.log(value);
+      data.suggested[i].stdCloses[j] = value;
+      minValue = Math.min(minValue, value);
+      maxValue = Math.max(maxValue, value);
+      console.log(minValue, maxValue);
     }
     //maxRoi = Math.max(maxRoi, stock.roi)
   }
@@ -200,7 +218,7 @@ function buildComparisonChart(data) {
   };
   var svgs = [];
   for (var size of sizes) {
-    var thickness = size == "wide" ? 0.4 : 0.6;
+    var thickness = size == "wide" ? 0.8 : 1.2;
     for (var i = 0; i < data.current.length; i++) {
       var stock = data.current[i];
       svgs.unshift(
@@ -236,7 +254,7 @@ function buildComparisonChart(data) {
     $("#svgStack").append(svg);
   }
   var yRange = maxValue - minValue;
-  $("#axis").append(`<p class="tick">${Math.round(maxValue * 100)}%</p>`);
+  $("#axis").append(`<p class="tick">${Math.round(maxTick * 100)}%</p>`);
   $("#axis").append(
     `<p class="tick" style="top: ${(maxValue / yRange) * 100}%;">0%</p>`
   );
@@ -301,7 +319,7 @@ function getSVGForOverlay(
   var suggestedMaxOpacity = 0.5;
   var styleAttr = `style="opacity: ${
     className.includes("suggested")
-      ? suggestedMaxOpacity * (1 - 0.04 * Math.pow(id, 1.8))
+      ? suggestedMaxOpacity * (1 - 0.15 * Math.pow(id, 0.8))
       : 1
   };"`;
   var html = `<div class="svgHolder ${className}"><svg viewbox="0 0 ${width} ${width *
