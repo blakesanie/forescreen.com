@@ -182,35 +182,39 @@ function makeAPICall() {
 }
 
 function buildComparisonChart(data) {
-  var minValue = 0;
-  var maxValue = 0;
+  console.table(data.current[0]);
+  var minValue = 1;
+  var maxValue = 1;
   var maxTick = 0;
   var maxRoi = 0;
   for (var i = 0; i < data.current.length; i++) {
+    var xOffset = 200 - data.current[i].stdCloses.length;
+    var yearsSince = xOffset / 20;
+    var yOffset = Math.pow(1 + data.current[i].roi, yearsSince) * 0.25;
     for (var j = 0; j < data.current[i].stdCloses.length; j++) {
+      data.current[i].stdCloses[j] += yOffset;
       maxTick = Math.max(maxTick, data.current[i].stdCloses[j]);
-      var value = Math.log(data.current[i].stdCloses[j] + 1);
+      var value = Math.log(data.current[i].stdCloses[j]);
       value = Math.max(value, 0);
-      console.log(value);
       data.current[i].stdCloses[j] = value;
       minValue = Math.min(minValue, value);
       maxValue = Math.max(maxValue, value);
-      console.log(minValue, maxValue);
     }
   }
   for (var i = 0; i < data.suggested.length; i++) {
+    var xOffset = 200 - data.suggested[i].stdCloses.length;
+    var yearsSince = xOffset / 20;
+    var yOffset = Math.pow(1 + data.suggested[i].roi, yearsSince) * 0.25;
     for (var j = 0; j < data.suggested[i].stdCloses.length; j++) {
+      data.suggested[i].stdCloses[j] += yOffset;
       maxTick = Math.max(maxTick, data.suggested[i].stdCloses[j]);
-      var value = Math.log(data.suggested[i].stdCloses[j] + 1);
-      console.log(value);
+      var value = Math.log(data.suggested[i].stdCloses[j]);
       data.suggested[i].stdCloses[j] = value;
       minValue = Math.min(minValue, value);
       maxValue = Math.max(maxValue, value);
-      console.log(minValue, maxValue);
     }
     //maxRoi = Math.max(maxRoi, stock.roi)
   }
-  console.log(minValue, maxValue);
   var sizes = ["wide", "tall"];
   var aspectRatios = {
     wide: 0.45,
@@ -307,19 +311,26 @@ function getSVGForOverlay(
 
   var yRange = max - min;
   // height / width
-  var width = company.stdCloses.length;
+  var width = 200;
   var coords = [];
+  var xOffset = 200 - company.stdCloses.length;
+  var yOffset = 0;
+  if (xOffset > 0) {
+    console.log(yOffset);
+  }
   for (var i = 0; i < company.stdCloses.length; i++) {
     coords.push({
-      x: i,
-      y: ((yRange - company.stdCloses[i]) / yRange) * width * aspectRatio
+      x: i + xOffset,
+      y:
+        ((yRange - company.stdCloses[i]) / yRange) * width * aspectRatio -
+        yOffset
     });
   }
   var path = createRoundedPathString(coords, radius || 0.4);
   var suggestedMaxOpacity = 0.5;
   var styleAttr = `style="opacity: ${
     className.includes("suggested")
-      ? suggestedMaxOpacity * (1 - 0.15 * Math.pow(id, 0.8))
+      ? Math.max(0.05, suggestedMaxOpacity * (1 - 0.07 * Math.pow(id, 1.5)))
       : 1
   };"`;
   var html = `<div class="svgHolder ${className}"><svg viewbox="0 0 ${width} ${width *
