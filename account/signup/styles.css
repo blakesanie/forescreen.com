@@ -62,14 +62,20 @@ input {
 }
 
 #other {
-  font-size: 16px;
-  margin-top: 30px;
+  font-size: 14px;
+  margin-top: 10px;
   line-height: 160%;
   transition: opacity 0.2s ease;
+  cursor: pointer;
 }
 
 #other:hover {
   opacity: 0.4;
+}
+
+#other:first-of-type {
+
+    margin-top: 30px;
 }
 
 #termsBox {

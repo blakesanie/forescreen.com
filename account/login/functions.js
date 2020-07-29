@@ -38,3 +38,22 @@ $(document).on("keydown", function(e) {
     submit();
   }
 });
+
+// reset passsword
+$("#other")
+  .eq(0)
+  .click(function() {
+    if ($("#email").val().length == 0) {
+      alert("Please enter your email address");
+      return;
+    }
+    firebase
+      .auth()
+      .sendPasswordResetEmail($("#email").val())
+      .then(function() {
+          alert("Success! Check your inbox for a password reset link.")
+      })
+      .catch(function(error) {
+        alert(error)
+      });
+  });

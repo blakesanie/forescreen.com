@@ -134,9 +134,11 @@ td:first-child {
   display: inline-block;
   background-color: var(--violet);
   color: white;
-  padding: 10px 20px 6px 20px;
+  padding: 8px 12px 2.5px 12px;
   margin: 0 auto;
   border-radius: 8px;
+  font-size: 100%;
+  line-height: 120% !important;
 }
 
 tr:nth-of-type(2) td {
@@ -170,6 +172,7 @@ td:last-child {
   border-radius: 12px;
   max-width: 700px;
   border: 4px dashed var(--middleViolet);
+  line-height: 200%;
 }
 
 .goPro:hover {
@@ -178,7 +181,6 @@ td:last-child {
 
 .goPro .proHeader {
   margin: 0 12px;
-  padding: 11px 18px 7px 18px;
 }
 
 @media screen and (max-width: 600px) {

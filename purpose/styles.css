@@ -1,5 +1,7 @@
 #content {
   /* align-items: center; */
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 #content * {
@@ -10,6 +12,10 @@ h3 {
   text-align: center;
   font-size: 36px;
   margin-top: 80px;
+}
+
+h3:not(h3:first-of-type) {
+  margin-top: 40px;
 }
 
 .bold {
@@ -106,6 +112,11 @@ p.holdingText {
 }
 
 @media screen and (max-width: 880px) {
+
+      #content {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
   .section {
     flex-direction: column !important;
   }

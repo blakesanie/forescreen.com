@@ -127,6 +127,14 @@ body {
   opacity: 0.5;
 }
 
+h3 {
+    line-height: 160%;
+}
+
+input[type="text"] {
+    -webkit-appearance: none;
+}
+
 @media screen and (max-width: 1100px) {
   #header {
     flex-direction: column;
