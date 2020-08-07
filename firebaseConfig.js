@@ -1,14 +1,14 @@
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyAjURuuRyhp1xS33K2lbkJkLZZpqUJQ12Q",
-  authDomain: "forescreen-f61bd.firebaseapp.com",
-  databaseURL: "https://forescreen-f61bd.firebaseio.com",
-  projectId: "forescreen-f61bd",
-  storageBucket: "forescreen-f61bd.appspot.com",
-  messagingSenderId: "211315124810",
-  appId: "1:211315124810:web:6bd05263193a004ade54b3",
-  measurementId: "G-VFFSL5X249"
-};
+    apiKey: "AIzaSyBgrEFZBmEbECcOzwpC2nqE1bKRs3NF1Xc",
+    authDomain: "investivision-b377d.firebaseapp.com",
+    databaseURL: "https://investivision-b377d.firebaseio.com",
+    projectId: "investivision-b377d",
+    storageBucket: "investivision-b377d.appspot.com",
+    messagingSenderId: "864222595381",
+    appId: "1:864222595381:web:040b95583f8c087c52a47c",
+    measurementId: "G-L3J2KXKZ2B"
+  };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
