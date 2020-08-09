@@ -223,7 +223,9 @@ function getLikedStocks() {
             company,
             0.5,
             i
-          )} <table cellspacing="0"> <tr> <td> <p class="statValue"> ${
+          )} <p class="timeFrame">${Math.round(
+            ((company.numDataPoints || 520) / 52) * 2
+          ) / 2} yrs</p><table cellspacing="0"> <tr> <td> <p class="statValue"> ${
             company.scoreRank
           }<sup>${getRankSuffix(
             company.scoreRank

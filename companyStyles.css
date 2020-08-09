@@ -19,6 +19,8 @@
   flex-shrink: 0;
   flex-direction: column;
   transition: box-shadow 0.2s ease, transform 0.25s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .company:hover {
@@ -81,9 +83,11 @@ svg {
 
 .timeFrame {
   text-align: right;
-  margin-top: -12px;
-  opacity: 0.5;
+  margin-top: -10px;
+  align-self: flex-end;
+  opacity: 0.7;
   font-size: 12px;
+  background-color: rgba(255,255,255,1);
 }
 
 table {

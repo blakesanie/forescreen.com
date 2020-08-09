@@ -40,8 +40,7 @@ $(document).on("keydown", function(e) {
 });
 
 // reset passsword
-$("#other")
-  .eq(0)
+$("#other").eq(0)
   .click(function() {
     if ($("#email").val().length == 0) {
       alert("Please enter your email address");
