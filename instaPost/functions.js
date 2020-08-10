@@ -1,12 +1,12 @@
 $.ajax({
   // localhost:3001/v1
-  url: `https://stock-ranking.herokuapp.com/v1/insta`,
+  url: `http://localhost:3001/v1/insta`,
   error: function(error) {
     console.error(error);
   },
   success: function(result) {
     var { data, rankType } = result;
-    data = data[0];
+
     console.log(data, rankType);
     $("h1").text(data.symbol);
     $("h2").text(data.name);
@@ -14,10 +14,10 @@ $.ajax({
       `${data[rankType]}<sup>${getRankSuffix(data[rankType])}</sup>`
     );
     var categories = {
-      r2Rank: "least volatile",
-      scoreRank: "overall",
-      saleScoreRank: "best discount",
-      roiRank: "fastest growing"
+      r2Rank: "Least Volatile",
+      scoreRank: "Overall",
+      saleScoreRank: "Current Buy",
+      roiRank: "Fastest Growing"
     };
     $("#rank h4").text(categories[rankType]);
     var sectorRank = data[rankType.replace("Rank", "") + "SectorRank"];
@@ -32,5 +32,8 @@ $.ajax({
     $("#date").text(
       `${now.getMonth() + 1}/${now.getDate()}/${now.getFullYear() % 100}`
     );
+    $("h6").text(`${Math.round(
+      ((data.numDataPoints || 520) / 52) * 2
+    ) / 2} yrs`)
   }
 });

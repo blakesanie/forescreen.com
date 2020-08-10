@@ -6,21 +6,21 @@
   position: relative;
   box-sizing: border-box;
   position: absolute;
+  overflow: visible;
 }
 
 body {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   width: 1080px;
-  height: 1080px;
+  min-height: 1080px !important;
   /* transform: scale(0.3); */
 }
 
 img {
-  filter: opacity(0.4) drop-shadow(0 0 0 #8a9be7) saturate(600%) !important;
-  width: 200px;
+  width: 120px;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 30px;
+  bottom: 10px;
 }
 
 .strong {
@@ -49,7 +49,7 @@ h2 {
 
 #rank {
   width: 100%;
-  top: 700px;
+  top: 710px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -126,8 +126,9 @@ svg {
 }
 
 h6 {
-  font-size: 50px;
+  font-size: 40px;
   right: 40px;
-  top: 500px;
+  top: 600px;
   opacity: 0.5;
+  background-color: white;
 }

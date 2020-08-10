@@ -5,9 +5,10 @@ function toCamelCase(str) {
 }
 
 function getRankSuffix(num) {
-  if (num == 1) return "st";
-  if (num == 2) return "nd";
-  if (num == 3) return "rd";
+  if (num % 100 >= 11 && num % 100 <= 13) return "th";
+  if (num % 10 == 1) return "st";
+  if (num % 10 == 2) return "nd";
+  if (num % 10 == 3) return "rd";
   return "th";
 }
 
