@@ -81,7 +81,7 @@ function makeAPICall() {
         ).append(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- homeCard -->
 <ins class="adsbygoogle"
- style="width:250px;height:250px"
+ style="display:inline-block;width:100%;height:100%;"
  data-ad-client="ca-pub-6360136649418025"
  data-ad-slot="6781678031"></ins>
 <script>
