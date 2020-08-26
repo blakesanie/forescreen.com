@@ -36,6 +36,20 @@ function makeAPICall() {
         });
       }
       for (var i = 0; i < overall.length && i < 5; i++) {
+        if (i == 2 || i == 4) {
+          try {
+            $(".overall .companyCenterHolder .company:last-child")
+              .before(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- homeCard -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:250px;height:250px"
+     data-ad-client="ca-pub-6360136649418025"
+     data-ad-slot="6781678031"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`);
+          } catch {}
+        }
         renderCompany(
           overall[i],
           ".overall .companyCenterHolder",
@@ -43,6 +57,7 @@ function makeAPICall() {
           i + "id" + i
         );
       }
+
       for (var i = 0; i < topSales.length && i < 5; i++) {
         renderCompany(
           topSales[i],
@@ -129,7 +144,7 @@ function renderSectorCompany(company) {
     company.scoreRank
   )}</sup> </p> <p class="statDesc"> Overall </p> </div> <div class="stat"> <p class="statValue"> ${Math.round(
     company.roi * 100
-)}<sup>%</sup> </p> <p class="statDesc"> Return </p> </div> <div class="stat"> <p class="statValue"> $${getFormattedMarketCap(
+  )}<sup>%</sup> </p> <p class="statDesc"> Return </p> </div> <div class="stat"> <p class="statValue"> $${getFormattedMarketCap(
     company.marketCap
   )}<sup>${getMarketCapSuffix(
     company.marketCap
