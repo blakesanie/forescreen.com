@@ -37,18 +37,9 @@ function makeAPICall() {
       }
       for (var i = 0; i < overall.length && i < 5; i++) {
         if (i == 2 || i == 4) {
-          try {
-            $(".overall .companyCenterHolder .company:last-child")
-              .before(`<div class="adCardHolder"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- homeCard -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:250px;height:250px"
-     data-ad-client="ca-pub-6360136649418025"
-     data-ad-slot="6781678031"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script></div>`);
-          } catch {}
+          $(".overall .companyCenterHolder .company:last-child").before(
+            `<div class="adCardHolder"></div>`
+          );
         }
         renderCompany(
           overall[i],
@@ -59,6 +50,11 @@ function makeAPICall() {
       }
 
       for (var i = 0; i < topSales.length && i < 5; i++) {
+        if (i == 2 || i == 4) {
+          $(".topSales .companyCenterHolder .company:last-child").before(
+            `<div class="adCardHolder"></div>`
+          );
+        }
         renderCompany(
           topSales[i],
           ".topSales .companyCenterHolder",
@@ -79,6 +75,19 @@ function makeAPICall() {
       console.log(sectors);
       $(".loader").css("display", "none");
       $(".needsToRender").removeClass("invisible");
+      $(".adCardHolder").each(function() {
+        $(
+          this
+        ).append(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- homeCard -->
+<ins class="adsbygoogle"
+ style="display:inline-block;width:250px;height:250px"
+ data-ad-client="ca-pub-6360136649418025"
+ data-ad-slot="6781678031"></ins>
+<script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+</script>`);
+      });
     }
   });
 }
