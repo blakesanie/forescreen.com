@@ -56,7 +56,9 @@ h4 {
     min-height: 225px;
 }
 
-.carousel .company .iframe {
+.adCardHolder {
+    width: 250px;
+    height: 250px;
     margin: 0 10px;
 }
 

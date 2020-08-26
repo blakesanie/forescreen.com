@@ -39,7 +39,7 @@ function makeAPICall() {
         if (i == 2 || i == 4) {
           try {
             $(".overall .companyCenterHolder .company:last-child")
-              .before(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+              .before(`<div class="adCardHolder"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- homeCard -->
 <ins class="adsbygoogle"
      style="display:inline-block;width:250px;height:250px"
@@ -47,7 +47,7 @@ function makeAPICall() {
      data-ad-slot="6781678031"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
-</script>`);
+</script></div>`);
           } catch {}
         }
         renderCompany(
