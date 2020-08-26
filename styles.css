@@ -45,7 +45,7 @@ h4 {
   box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.06);
   margin: 0 10px;
   border-radius: 8px;
-  display: inline-flex;
+  display: flex;
   padding: 20px;
   flex-shrink: 0;
   flex-direction: column;
@@ -53,7 +53,11 @@ h4 {
 }
 
 .carousel .company {
-    height: 225px;
+    min-height: 225px;
+}
+
+.carousel .company .iframe {
+    margin: 0 10px;
 }
 
 .company *:not(.svgHolder *) {
