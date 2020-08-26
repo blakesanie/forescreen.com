@@ -85,12 +85,14 @@ function makeAPICall() {
  data-ad-client="ca-pub-6360136649418025"
  data-ad-slot="6781678031"></ins>
 <script>
- $(document).ready(function(){(adsbygoogle = window.adsbygoogle || []).push({})});
+ (adsbygoogle = window.adsbygoogle || []).push({});
 </script>`);
       });
     }
   });
 }
+
+// $(document).ready(function(){(adsbygoogle = window.adsbygoogle || []).push({})});
 
 function renderSectorSection(sector) {
   var html = `<div class="sector ${toCamelCase(
