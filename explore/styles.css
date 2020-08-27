@@ -73,6 +73,16 @@ select {
   pointer-events: none;
 }
 
+.adHolder {
+    width: 280px;
+    height: 294px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+    margin: 10px;
+}
+
 @media screen and (max-width: 500px) {
   h3 {
     font-size: 7vmin;

@@ -118,11 +118,28 @@ function makeAPICall(tokenParam) {
         )}</sup> </p> <p class="statDesc"> Market Cap. </p> </td> </tr> </table> </a>`;
         $("#companies").prepend(html);
       }
+      var firstAdIndex = 1 + Math.floor(Math.random() * 4);
+      var secondAdIndex = 4 + Math.floor(Math.random() * 4);
+      insertAdAtIndex(firstAdIndex);
+      insertAdAtIndex(secondAdIndex);
       $(".loader").css("display", "none");
       $(".proMarker").css("display", "none");
       $("div.needsToRender").removeClass("invisible");
     }
   });
+}
+
+function insertAdAtIndex(i) {
+    $(".company").eq(i).after(`<div class="adHolder"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<ins class="adsbygoogle"
+ style="display:block; text-align:center; height: 100%; width: 100%;"
+ data-ad-layout="in-article"
+ data-ad-format="fluid"
+ data-ad-client="ca-pub-6360136649418025"
+ data-ad-slot="8953202344"></ins>
+<script>
+ (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>`)
 }
 
 if (page == 0) {
