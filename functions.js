@@ -80,7 +80,7 @@ function makeAPICall() {
           this
         ).append(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
-     style="display:block; text-align:center;"
+     style="display:block; text-align:center; height: 100%; width: 100%;"
      data-ad-layout="in-article"
      data-ad-format="fluid"
      data-ad-client="ca-pub-6360136649418025"

@@ -57,9 +57,16 @@ h4 {
 }
 
 .adCardHolder {
-    width: 250px;
-    height: 250px;
+    width: 280px;
+    height: 230px;
     margin: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ins {
+    /* background-color: yellow; */
 }
 
 .company *:not(.svgHolder *) {
