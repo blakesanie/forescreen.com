@@ -73,6 +73,17 @@ ins {
   /* z-index: 100; */
 }
 
+.sectorAdHolder {
+    width: 100%;
+    min-height: 0px;
+    /* background-color: red; */
+    opacity: 0.3;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .company:hover {
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.06);
   transform: scale(1.05);

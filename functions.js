@@ -75,7 +75,7 @@ function makeAPICall() {
       console.log(sectors);
       $(".loader").css("display", "none");
       $(".needsToRender").removeClass("invisible");
-      $(".adCardHolder").each(function() {
+      $(".adCardHolder, .sectorAdHolder").each(function() {
         $(
           this
         ).append(`<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -102,7 +102,7 @@ function renderSectorSection(sector) {
     sector
   )}Gradient">${sector}</h4> </div> <a class="company"  href="./explore/?sector=${toCamelCase(
     sector
-  )}"> <p class="viewMore"> View more </p> </a> </div>`;
+)}"> <p class="viewMore"> View more </p> </a> <div class="sectorAdHolder"></div></div>`;
   $("#sectors").append(html);
 }
 
@@ -161,7 +161,7 @@ function renderSectorCompany(company) {
   )}<sup>${getMarketCapSuffix(
     company.marketCap
   )}</sup> </p> <p class="statDesc"> Market Cap. </p> </div> </div> </a>`;
-  $("." + toCamelCase(company.sector) + " .company:last-child").before(html);
+  $("." + toCamelCase(company.sector) + " .company:last-of-type").before(html);
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
