@@ -80,6 +80,7 @@ $(".action").click(function() {
     alert("You need to verify your email before becoming a Pro member");
     return;
   }
+  // pk_live_nL2eBNFYDbE9gT18kWyPB92y00QpdTDTk5
   var stripe = Stripe("pk_live_nL2eBNFYDbE9gT18kWyPB92y00QpdTDTk5");
   var checkoutButton = document.getElementById(
     "checkout-button-plan_HF3C1YRHG8Ttiu"
@@ -92,7 +93,7 @@ $(".action").click(function() {
   // var cancel = parts.join("/");
   stripe
     .redirectToCheckout({
-      items: [{ plan: "price_1Gpy9dACbhl0jE7ZM0nCCVTA", quantity: 1 }], //items: [{ plan: "plan_HF3C1YRHG8Ttiu", quantity: 1 }],
+      items: [{ plan: "price_1HF52SACbhl0jE7ZHVJ8Db9b", quantity: 1 }], //items: [{ plan: "plan_HF3C1YRHG8Ttiu", quantity: 1 }],
 
       // Do not rely on the redirect to the successUrl for fulfilling
       // purchases, customers may not always reach the success_url after
